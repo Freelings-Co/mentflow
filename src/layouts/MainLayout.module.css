@@ -1,0 +1,36 @@
+.mainLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-background);
+}
+
+.footer {
+  margin-top: auto;
+  background: var(--cor-suporte);
+  color: #fff;
+  padding: 2rem 0 1.2rem 0;
+  text-align: center;
+  font-size: 1rem;
+}
+.footerContent {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.links a, .socials a, .contact a {
+  color: #fff;
+  margin: 0 0.3rem;
+  text-decoration: underline dotted;
+  transition: color 0.2s;
+}
+.links a:hover, .socials a:hover, .contact a:hover {
+  color: var(--cor-principal);
+}
+.copyright {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
