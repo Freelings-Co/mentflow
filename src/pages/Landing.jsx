@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
     Calendar, 
     Shield, 
@@ -12,12 +12,37 @@ import {
     Globe,
     Award,
     Smartphone,
-    ArrowRight
+    ArrowRight,
+    Play,
+    Menu,
+    X
 } from 'lucide-react';
 
+import Reveal from '../components/Reveal';
 import '../pages/Landing.css'
 
 const MentFlowLanding = () => {
+    const [headerVisible, setHeaderVisible] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            setHeaderVisible(scrollY > 100);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen);
+    };
+
+    const closeMobileMenu = () => {
+        setMobileMenuOpen(false);
+    };
+
     const steps = [
         {
             number: 1,
@@ -121,11 +146,11 @@ const MentFlowLanding = () => {
     return (
         <div className="landing-page">
             {/* Header */}
-            <header className="header">
+            <header className={`header ${headerVisible ? 'visible' : ''}`}>
                 <div className="container">
                     <div className="header-content">
                         <a href="#" className="logo">MentFlow</a>
-                        <nav>
+                        <nav className="desktop-nav">
                             <ul className="nav-menu">
                                 <li><a href="#como-funciona" className="nav-link">Como Funciona</a></li>
                                 <li><a href="#servicos" className="nav-link">Serviços</a></li>
@@ -133,47 +158,59 @@ const MentFlowLanding = () => {
                                 <li><a href="#contato" className="nav-link">Contato</a></li>
                             </ul>
                         </nav>
-                        <a href="#agendar" className="cta-button">Agendar Consulta</a>
+                        <div className="header-actions">
+                            <a href="#agendar" className="cta-button">Agendar Consulta</a>
+                            <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+                                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                            </button>
+                        </div>
                     </div>
+                </div>
+                
+                {/* Mobile Menu */}
+                <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+                    <nav className="mobile-nav">
+                        <ul className="mobile-nav-menu">
+                            <li><a href="#como-funciona" className="mobile-nav-link" onClick={closeMobileMenu}>Como Funciona</a></li>
+                            <li><a href="#servicos" className="mobile-nav-link" onClick={closeMobileMenu}>Serviços</a></li>
+                            <li><a href="#depoimentos" className="mobile-nav-link" onClick={closeMobileMenu}>Depoimentos</a></li>
+                            <li><a href="#contato" className="mobile-nav-link" onClick={closeMobileMenu}>Contato</a></li>
+                        </ul>
+                        <a href="#agendar" className="mobile-cta-button" onClick={closeMobileMenu}>
+                            Agendar Consulta
+                        </a>
+                    </nav>
                 </div>
             </header>
 
             {/* Hero Section */}
             <section className="hero">
                 <div className="container">
-                    <div className="hero-grid">
-                        <div className="hero-content">
-                            <div className="hero-badge">✨ Terapia Online de Qualidade</div>
+                    <div className="hero-content">
+                        <div className="hero-text">
+                            <div className="hero-badge">✨ Sua jornada de bem-estar começa aqui</div>
                             <h1 className="hero-title">
-                                Cuide da sua <span className="highlight">saúde mental</span> com profissionais qualificados
+                                Conecte-se com o <span className="highlight">terapeuta ideal</span> para você
                             </h1>
                             <p className="hero-subtitle">
-                                Conectamos você a psicólogos especialistas através de uma plataforma segura, 
-                                flexível e personalizada para sua jornada de bem-estar.
+                                Plataforma que conecta você aos melhores profissionais de saúde mental, 
+                                com flexibilidade total e cuidado personalizado para sua jornada de autoconhecimento.
                             </p>
-                            <a href="#agendar" className="hero-cta">
-                                Começar Agora
-                                <ArrowRight size={20} />
-                            </a>
-                            <div className="hero-stats">
-                                <div className="stat-item">
-                                    <span className="stat-number">500+</span>
-                                    <span className="stat-label">Pacientes Atendidos</span>
-                                </div>
-                                <div className="stat-item">
-                                    <span className="stat-number">50+</span>
-                                    <span className="stat-label">Profissionais</span>
-                                </div>
-                                <div className="stat-item">
-                                    <span className="stat-number">4.9</span>
-                                    <span className="stat-label">Avaliação</span>
-                                </div>
+                            <div className="hero-actions">
+                                <a href="#agendar" className="cta-button-large">
+                                    Começar Agora
+                                    <ArrowRight size={20} />
+                                </a>
+                                <a href="#como-funciona" className="cta-button-secondary">
+                                    <Play size={18} />
+                                    Como Funciona
+                                </a>
                             </div>
                         </div>
                         <div className="hero-image">
                             <img 
-                                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Profissional de psicologia"
+                                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Pessoa em sessão de terapia online"
                                 className="hero-image-main"
                             />
                         </div>
@@ -182,155 +219,179 @@ const MentFlowLanding = () => {
             </section>
 
             {/* Como Funciona */}
-            <section className="section how-it-works" id="como-funciona">
-                <div className="container">
-                    <div className="section-header">
-                        <div className="section-badge">Como Funciona</div>
-                        <h2 className="section-title">Simples, rápido e eficaz</h2>
-                        <p className="section-subtitle">
-                            Em apenas 3 passos você está conectado ao profissional ideal para sua jornada
-                        </p>
+            <Reveal>
+                <section className="section how-it-works" id="como-funciona">
+                    <div className="container">
+                        <div className="section-header">
+                            <div className="section-badge">Como Funciona</div>
+                            <h2 className="section-title">Simples, rápido e eficaz</h2>
+                            <p className="section-subtitle">
+                                Em apenas 3 passos você está conectado ao profissional ideal para sua jornada
+                            </p>
+                        </div>
+                        <div className="steps-grid">
+                            {steps.map((step, index) => (
+                                <Reveal key={index}>
+                                    <div className="step-card">
+                                        <div className="step-number">{step.number}</div>
+                                        <h3 className="step-title">{step.title}</h3>
+                                        <p className="step-description">{step.description}</p>
+                                    </div>
+                                </Reveal>
+                            ))}
+                        </div>
                     </div>
-                    <div className="steps-grid">
-                        {steps.map((step, index) => (
-                            <div key={index} className="step-card">
-                                <div className="step-number">{step.number}</div>
-                                <h3 className="step-title">{step.title}</h3>
-                                <p className="step-description">{step.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+                </section>
+            </Reveal>
 
             {/* Benefícios */}
-            <section className="section benefits">
-                <div className="container">
-                    <div className="section-header">
-                        <div className="section-badge">Benefícios</div>
-                        <h2 className="section-title">Por que escolher a MentFlow?</h2>
-                        <p className="section-subtitle">
-                            Oferecemos uma experiência única em terapia online
-                        </p>
+            <Reveal>
+                <section className="section benefits">
+                    <div className="container">
+                        <div className="section-header">
+                            <div className="section-badge">Benefícios</div>
+                            <h2 className="section-title">Por que escolher a MentFlow?</h2>
+                            <p className="section-subtitle">
+                                Oferecemos uma experiência única em terapia online
+                            </p>
+                        </div>
+                        <div className="benefits-grid">
+                            {benefits.map((benefit, index) => (
+                                <Reveal key={index}>
+                                    <div className="benefit-card">
+                                        <div className="benefit-icon">
+                                            <benefit.icon size={24} />
+                                        </div>
+                                        <h3 className="benefit-title">{benefit.title}</h3>
+                                        <p className="benefit-description">{benefit.description}</p>
+                                    </div>
+                                </Reveal>
+                            ))}
+                        </div>
                     </div>
-                    <div className="benefits-grid">
-                        {benefits.map((benefit, index) => (
-                            <div key={index} className="benefit-card">
-                                <div className="benefit-icon">
-                                    <benefit.icon size={24} />
-                                </div>
-                                <h3 className="benefit-title">{benefit.title}</h3>
-                                <p className="benefit-description">{benefit.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+                </section>
+            </Reveal>
 
             {/* Serviços */}
-            <section className="section services" id="servicos">
-                <div className="container">
-                    <div className="section-header">
-                        <div className="section-badge">Serviços</div>
-                        <h2 className="section-title">Nossos serviços especializados</h2>
-                        <p className="section-subtitle">
-                            Diferentes modalidades para atender suas necessidades específicas
-                        </p>
+            <Reveal>
+                <section className="section services" id="servicos">
+                    <div className="container">
+                        <div className="section-header">
+                            <div className="section-badge">Serviços</div>
+                            <h2 className="section-title">Nossos serviços especializados</h2>
+                            <p className="section-subtitle">
+                                Diferentes modalidades para atender suas necessidades específicas
+                            </p>
+                        </div>
+                        <div className="services-grid">
+                            {services.map((service, index) => (
+                                <Reveal key={index}>
+                                    <div className="service-card">
+                                        <div className="service-icon">
+                                            <service.icon size={24} />
+                                        </div>
+                                        <h3 className="service-title">{service.title}</h3>
+                                        <p className="service-description">{service.description}</p>
+                                        <ul className="service-features">
+                                            {service.features.map((feature, idx) => (
+                                                <li key={idx}>{feature}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </Reveal>
+                            ))}
+                        </div>
                     </div>
-                    <div className="services-grid">
-                        {services.map((service, index) => (
-                            <div key={index} className="service-card">
-                                <div className="service-icon">
-                                    <service.icon size={24} />
-                                </div>
-                                <h3 className="service-title">{service.title}</h3>
-                                <p className="service-description">{service.description}</p>
-                                <ul className="service-features">
-                                    {service.features.map((feature, idx) => (
-                                        <li key={idx}>{feature}</li>
+                </section>
+            </Reveal>
+
+            {/* Para Quem */}
+            <Reveal>
+                <section className="section target-audience">
+                    <div className="container">
+                        <div className="audience-grid">
+                            <div className="audience-content">
+                                <div className="section-badge">Para Quem</div>
+                                <h2 className="section-title">Ideal para você que busca:</h2>
+                                <ul className="audience-list">
+                                    {targetAudiences.map((audience, index) => (
+                                        <Reveal key={index}>
+                                            <li className="audience-item">
+                                                <div className="audience-icon">
+                                                    <audience.icon size={20} />
+                                                </div>
+                                                <span className="audience-text">{audience.text}</span>
+                                            </li>
+                                        </Reveal>
                                     ))}
                                 </ul>
                             </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Para Quem */}
-            <section className="section target-audience">
-                <div className="container">
-                    <div className="audience-grid">
-                        <div className="audience-content">
-                            <div className="section-badge">Para Quem</div>
-                            <h2 className="section-title">Ideal para você que busca:</h2>
-                            <ul className="audience-list">
-                                {targetAudiences.map((audience, index) => (
-                                    <li key={index} className="audience-item">
-                                        <div className="audience-icon">
-                                            <audience.icon size={20} />
-                                        </div>
-                                        <span className="audience-text">{audience.text}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="audience-image">
-                            <img 
-                                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Pessoa em terapia"
-                                className="audience-image-main"
-                            />
+                            <Reveal>
+                                <div className="audience-image">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                        alt="Pessoa em terapia"
+                                        className="audience-image-main"
+                                    />
+                                </div>
+                            </Reveal>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </Reveal>
 
             {/* Depoimentos */}
-            <section className="section testimonials" id="depoimentos">
-                <div className="container">
-                    <div className="section-header">
-                        <div className="section-badge">Depoimentos</div>
-                        <h2 className="section-title">O que nossos pacientes dizem</h2>
-                        <p className="section-subtitle">
-                            Histórias reais de transformação e crescimento
-                        </p>
-                    </div>
-                    <div className="testimonials-grid">
-                        {testimonials.map((testimonial, index) => (
-                            <div key={index} className="testimonial-card">
-                                <p className="testimonial-content">{testimonial.content}</p>
-                                <div className="testimonial-author">
-                                    <img 
-                                        src={testimonial.avatar}
-                                        alt={testimonial.author}
-                                        className="testimonial-avatar"
-                                    />
-                                    <div className="testimonial-info">
-                                        <div className="testimonial-name">{testimonial.author}</div>
-                                        <div className="testimonial-role">{testimonial.role}</div>
+            <Reveal>
+                <section className="section testimonials" id="depoimentos">
+                    <div className="container">
+                        <div className="section-header">
+                            <div className="section-badge">Depoimentos</div>
+                            <h2 className="section-title">O que nossos pacientes dizem</h2>
+                            <p className="section-subtitle">
+                                Histórias reais de transformação e crescimento
+                            </p>
+                        </div>
+                        <div className="testimonials-grid">
+                            {testimonials.map((testimonial, index) => (
+                                <Reveal key={index}>
+                                    <div className="testimonial-card">
+                                        <p className="testimonial-content">{testimonial.content}</p>
+                                        <div className="testimonial-author">
+                                            <img 
+                                                src={testimonial.avatar}
+                                                alt={testimonial.author}
+                                                className="testimonial-avatar"
+                                            />
+                                            <div className="testimonial-info">
+                                                <div className="testimonial-name">{testimonial.author}</div>
+                                                <div className="testimonial-role">{testimonial.role}</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        ))}
+                                </Reveal>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </Reveal>
 
             {/* CTA Final */}
-            <section className="cta-final">
-                <div className="container">
-                    <div className="cta-content">
-                        <h2 className="cta-title">Pronto para começar sua jornada?</h2>
-                        <p className="cta-subtitle">
-                            Não espere mais. Sua saúde mental merece cuidado profissional e personalizado.
-                        </p>
-                        <a href="#agendar" className="cta-button-large">
-                            Agendar Primeira Consulta
-                            <ArrowRight size={20} />
-                        </a>
+            <Reveal>
+                <section className="cta-final">
+                    <div className="container">
+                        <div className="cta-content">
+                            <h2 className="cta-title">Pronto para começar sua jornada?</h2>
+                            <p className="cta-subtitle">
+                                Não espere mais. Sua saúde mental merece cuidado profissional e personalizado.
+                            </p>
+                            <a href="#agendar" className="cta-button-large">
+                                Agendar Primeira Consulta
+                                <ArrowRight size={20} />
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </Reveal>
         </div>
     );
 };
