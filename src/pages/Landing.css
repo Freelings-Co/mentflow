@@ -47,7 +47,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--cor-texto);
     background: var(--cor-branco);
@@ -257,11 +257,13 @@ body {
     display: flex;
     align-items: center;
     background: var(--gradient-soft);
+ 
     position: relative;
     overflow: hidden;
+    background-attachment: fixed;
 }
 
-.hero::before {
+/* .hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -286,7 +288,7 @@ body {
 @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-20px) rotate(5deg); }
-}
+} */
 
 .hero-content {
     display: grid;

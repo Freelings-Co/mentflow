@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { 
-    Calendar, 
-    Shield, 
-    Heart, 
-    Users, 
-    Clock, 
-    Star, 
-    CheckCircle, 
-    MessageSquare, 
-    Video, 
+import {
+    Calendar,
+    Shield,
+    Heart,
+    Users,
+    Clock,
+    Star,
+    CheckCircle,
+    MessageSquare,
+    Video,
     Globe,
     Award,
     Smartphone,
@@ -20,6 +20,7 @@ import {
 
 import Reveal from '../components/Reveal';
 import '../pages/Landing.css'
+import BannerTest from '../assets/banner-test1.webp';
 
 const MentFlowLanding = () => {
     const [headerVisible, setHeaderVisible] = useState(false);
@@ -166,7 +167,7 @@ const MentFlowLanding = () => {
                         </div>
                     </div>
                 </div>
-                
+
                 {/* Mobile Menu */}
                 <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
                     <nav className="mobile-nav">
@@ -185,7 +186,12 @@ const MentFlowLanding = () => {
 
             {/* Hero Section */}
             <section className="hero">
-                <div className="container">
+
+                <div className="box-image">
+                    <img src={BannerTest} alt="" />
+                </div>
+
+                {/* <div className="container">
                     <div className="hero-content">
                         <div className="hero-text">
                             <div className="hero-badge">✨ Sua jornada de bem-estar começa aqui</div>
@@ -215,7 +221,7 @@ const MentFlowLanding = () => {
                             />
                         </div>
                     </div>
-                </div>
+                </div> */}
             </section>
 
             {/* Como Funciona */}
@@ -328,7 +334,7 @@ const MentFlowLanding = () => {
                             </div>
                             <Reveal>
                                 <div className="audience-image">
-                                    <img 
+                                    <img
                                         src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                                         alt="Pessoa em terapia"
                                         className="audience-image-main"
@@ -357,7 +363,7 @@ const MentFlowLanding = () => {
                                     <div className="testimonial-card">
                                         <p className="testimonial-content">{testimonial.content}</p>
                                         <div className="testimonial-author">
-                                            <img 
+                                            <img
                                                 src={testimonial.avatar}
                                                 alt={testimonial.author}
                                                 className="testimonial-avatar"
