@@ -301,7 +301,7 @@ const MentFlowLanding = () => {
         <section className='section how-it-works' id='como-funciona'>
           <div className='container'>
             <div className='section-header'>
-              <div className='section-badge'>Como Funciona</div>
+              <div className='section-badge'><h1>Como Funciona</h1></div>
               <h2 className='section-title'>Simples, rápido e eficaz</h2>
               <p className='section-subtitle'>
                 Em apenas 3 passos você está conectado ao profissional ideal
@@ -328,7 +328,7 @@ const MentFlowLanding = () => {
         <section className='section benefits'>
           <div className='container'>
             <div className='section-header'>
-              <div className='section-badge'>Benefícios</div>
+              <div className='section-badge'><h1>Benefícios</h1></div>
               <h2 className='section-title'>Por que escolher a MentFlow?</h2>
               <p className='section-subtitle'>
                 Oferecemos uma experiência única em terapia online
@@ -356,7 +356,7 @@ const MentFlowLanding = () => {
         <section className='section services' id='servicos'>
           <div className='container'>
             <div className='section-header'>
-              <div className='section-badge'>Serviços</div>
+              <div className='section-badge'><h1>Serviços</h1></div>
               <h2 className='section-title'>Nossos serviços especializados</h2>
               <p className='section-subtitle'>
                 Diferentes modalidades para atender suas necessidades
@@ -386,7 +386,7 @@ const MentFlowLanding = () => {
           <div className='container'>
             <div className='audience-grid'>
               <div className='audience-content'>
-                <div className='section-badge'>Para Quem</div>
+                <div className='section-badge'><h1>Para Quem?</h1></div>
                 <h2 className='section-title'>Ideal para você que busca:</h2>
                 <ul className='audience-list'>
                   {targetAudiences.map((audience, index) => (
@@ -420,7 +420,7 @@ const MentFlowLanding = () => {
         <section className='section testimonials' id='depoimentos'>
           <div className='container'>
             <div className='section-header'>
-              <div className='section-badge'>Depoimentos</div>
+              <div className='section-badge'><h1>Depoimentos</h1></div>
               <h2 className='section-title'>O que nossos pacientes dizem</h2>
               <p className='section-subtitle'>
                 Histórias reais de transformação e crescimento
