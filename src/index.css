@@ -1,8 +1,5 @@
 @import './styles/colors.css';
 @import './styles/fonts.css';
-<<<<<<< HEAD
-@import './styles/base.css';
-=======
 @import './styles/base.css';
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
@@ -93,4 +90,3 @@ p {
 ::-webkit-scrollbar-thumb:hover {
   background: #916156;
 }
->>>>>>> b19cd2859624bdb50d17fc9f9a8f772336538223
