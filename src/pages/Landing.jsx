@@ -20,6 +20,7 @@ import {
 import Reveal from '../components/Reveal'
 import '../pages/Landing.css'
 import BannerTest from '../assets/banner-test1.webp'
+import Banner from '../assets/banner.webp'
 
 const MentFlowLanding = () => {
   const [headerVisible, setHeaderVisible] = useState(false)
@@ -259,11 +260,29 @@ const MentFlowLanding = () => {
 
       {/* Hero Section */}
       <section className='hero'>
-        <div className='box-image'>
-          <img src={BannerTest} alt='' />
-        </div>
+        <img src={Banner} alt='' />
+        {/* <div className='box-hero-text'>
+          <p className='header-headline'>Cuide da sua</p>
+          <div className="highlight">
+            <h1 className='headline1'>Saúde</h1>
+            <h1 className='headline2'>Mental</h1>
+          </div>
 
-        {/* <div className="container">
+          <p className='footer-headline'>com profissionais<br />qualificados</p>
+
+          <div className="hero-bullets">
+            <span>Seguro</span>
+            <span>100% Seguro</span>
+            <span>Fácil e Intuitivo</span>
+          </div>
+        </div> */}
+        {/* <div className='box-image'>
+          <img src={BannerTest} alt='' />
+        </div> */}
+      </section>
+
+
+      {/* <div className="container">
                     <div className="hero-content">
                         <div className="hero-text">
                             <div className="hero-badge">✨ Sua jornada de bem-estar começa aqui</div>
@@ -294,7 +313,7 @@ const MentFlowLanding = () => {
                         </div>
                     </div>
                 </div> */}
-      </section>
+
 
       {/* Como Funciona */}
       <Reveal>

@@ -1,7 +1,37 @@
 :root {
-  --cor-principal: #F6D5D5;
-  --cor-background: #F1E4D1;
-  --cor-destaque: #D3E0C4;
-  --cor-suporte: #BFA6A0;
-  --cor-texto: #4F4F4F;
+  /* Nova paleta de cores */
+    --cor-primaria: #d7a084;
+    --cor-secundaria: #916156;
+    --cor-background: #fdf0e0;
+    --cor-destaque: #35485d;
+    --cor-branco: #fff;
+
+    /* Variações e tons */
+    --cor-primaria-light: rgba(215, 160, 132, 0.1);
+    --cor-primaria-medium: rgba(215, 160, 132, 0.2);
+    --cor-secundaria-light: rgba(145, 97, 86, 0.1);
+    --cor-destaque-light: rgba(53, 72, 93, 0.1);
+
+    /* Texto */
+    --cor-texto: #35485d;
+    --cor-texto-claro: rgba(53, 72, 93, 0.7);
+    --cor-texto-muito-claro: rgba(53, 72, 93, 0.5);
+
+    /* Sombras */
+    --sombra-suave: 0 2px 20px rgba(53, 72, 93, 0.08);
+    --sombra-media: 0 8px 30px rgba(53, 72, 93, 0.12);
+    --sombra-forte: 0 20px 60px rgba(53, 72, 93, 0.15);
+    --sombra-colorida: 0 10px 40px rgba(215, 160, 132, 0.2);
+
+    /* Bordas e transições */
+    --border-radius: 12px;
+    --border-radius-large: 20px;
+    --border-radius-xl: 32px;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease-out;
+
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    --gradient-soft: linear-gradient(135deg, var(--cor-background), var(--cor-branco));
+    --gradient-overlay: linear-gradient(135deg, rgba(215, 160, 132, 0.9), rgba(145, 97, 86, 0.9));
 }
