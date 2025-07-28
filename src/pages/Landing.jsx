@@ -19,8 +19,8 @@ import {
 
 import Reveal from '../components/Reveal'
 import '../pages/Landing.css'
-import BannerTest from '../assets/banner-test1.webp'
-import Banner from '../assets/banner1.webp'  
+import Design1 from '../assets/design1.webp'
+import Banner from '../assets/banner1.webp'
 
 const MentFlowLanding = () => {
   const [headerVisible, setHeaderVisible] = useState(false)
@@ -47,19 +47,19 @@ const MentFlowLanding = () => {
   const steps = [
     {
       number: 1,
-      title: 'Cadastro Personalizado',
+      title: '01. Cadastro Personalizado',
       description:
         'Conte sua história e preferências para encontrarmos o terapeuta ideal para você.',
     },
     {
       number: 2,
-      title: 'Match Inteligente',
+      title: '02. Match Inteligente',
       description:
         'Nossa plataforma conecta você ao profissional que melhor se alinha com suas necessidades.',
     },
     {
       number: 3,
-      title: 'Sessões Flexíveis',
+      title: '03. Sessões Flexíveis',
       description:
         'Agende sessões no horário que funciona para você, com total flexibilidade.',
     },
@@ -261,66 +261,19 @@ const MentFlowLanding = () => {
       {/* Hero Section */}
       <section className='hero'>
         <img src={Banner} alt='' />
-        {/* <div className='box-hero-text'>
-          <p className='header-headline'>Cuide da sua</p>
-          <div className="highlight">
-            <h1 className='headline1'>Saúde</h1>
-            <h1 className='headline2'>Mental</h1>
-          </div>
 
-          <p className='footer-headline'>com profissionais<br />qualificados</p>
-
-          <div className="hero-bullets">
-            <span>Seguro</span>
-            <span>100% Seguro</span>
-            <span>Fácil e Intuitivo</span>
-          </div>
-        </div> */}
-        {/* <div className='box-image'>
-          <img src={BannerTest} alt='' />
-        </div> */}
       </section>
-
-
-      {/* <div className="container">
-                    <div className="hero-content">
-                        <div className="hero-text">
-                            <div className="hero-badge">✨ Sua jornada de bem-estar começa aqui</div>
-                            <h1 className="hero-title">
-                                Conecte-se com o <span className="highlight">terapeuta ideal</span> para você
-                            </h1>
-                            <p className="hero-subtitle">
-                                Plataforma que conecta você aos melhores profissionais de saúde mental, 
-                                com flexibilidade total e cuidado personalizado para sua jornada de autoconhecimento.
-                            </p>
-                            <div className="hero-actions">
-                                <a href="#agendar" className="cta-button-large">
-                                    Começar Agora
-                                    <ArrowRight size={20} />
-                                </a>
-                                <a href="#como-funciona" className="cta-button-secondary">
-                                    <Play size={18} />
-                                    Como Funciona
-                                </a>
-                            </div>
-                        </div>
-                        <div className="hero-image">
-                            <img 
-                                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Pessoa em sessão de terapia online"
-                                className="hero-image-main"
-                            />
-                        </div>
-                    </div>
-                </div> */}
-
 
       {/* Como Funciona */}
       <Reveal>
         <section className='section how-it-works' id='como-funciona'>
+
+          <div className='how-works-image-box'>
+            <img src={Design1} alt="" />
+          </div>
           <div className='container'>
-            <div className='section-header'>
-              <div className='section-badge'><h1>Como Funciona</h1></div>
+            <div className='section-header' id='how-works-header'>
+              <div className='section-badge'><h1>Como Funciona?</h1></div>
               <h2 className='section-title'>Simples, rápido e eficaz</h2>
               <p className='section-subtitle'>
                 Em apenas 3 passos você está conectado ao profissional ideal
@@ -331,9 +284,11 @@ const MentFlowLanding = () => {
               {steps.map((step, index) => (
                 <Reveal key={index}>
                   <div className='step-card'>
-                    <div className='step-number'>{step.number}</div>
-                    <h3 className='step-title'>{step.title}</h3>
-                    <p className='step-description'>{step.description}</p>
+                    {/* <div className='step-number'>{step.number}</div> */}
+                    <div className='step-texts'>
+                      <h3 className='step-title'>{step.title}</h3>
+                      <p className='step-description'>{step.description}</p>
+                    </div>
                   </div>
                 </Reveal>
               ))}
