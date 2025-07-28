@@ -62,11 +62,10 @@ body {
 }
 
 .logo {
-    font-size: clamp(1.5rem, 3vw, 1.8rem);
-    font-weight: 800;
-    color: var(--cor-destaque);
-    text-decoration: none;
-    transition: var(--transition-fast);
+    width: 15em;
+    object-fit: cover;
+    height: 3em;
+
 }
 
 .logo:hover {
@@ -112,7 +111,7 @@ body {
 }
 
 .nav-link {
-    color: var(--cor-texto);
+    color: var(--cor-secundaria);
     text-decoration: none;
     font-weight: 500;
     font-size: clamp(0.9rem, 2vw, 1rem);
@@ -148,7 +147,7 @@ body {
 }
 
 .cta-button {
-    background: var(--gradient-primary);
+    background: var(--cor-primaria);
     color: var(--cor-branco);
     padding: 0.8rem 1.8rem;
     border-radius: var(--border-radius);
@@ -473,10 +472,8 @@ body {
 .section-badge {
     display: inline-block;
     background: transparent;
-    padding: 1rem 3rem;
-
     border-radius: 50px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 
     h1 {
         font-size: 3rem;
@@ -490,14 +487,14 @@ body {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--cor-primaria);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     line-height: 1.2;
 }
 
 .section-subtitle {
     font-size: 1.1rem;
     color: var(--cor-texto-claro);
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
 }
@@ -669,12 +666,19 @@ body {
 
 .service-card {
     background: var(--cor-branco);
-    padding: 2.5rem;
+    padding: 1em 1em;
     border-radius: var(--border-radius-large);
     box-shadow: var(--sombra-suave);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+}
+
+.service-image{
+    width: 100%;
+    height: 12em;
+    object-position: top;
+    object-fit: cover;
 }
 
 .service-card::before {
@@ -699,9 +703,17 @@ body {
     box-shadow: var(--sombra-forte);
 }
 
+.service-card-title {
+    display: flex; 
+    align-items: center;
+    gap: 0.4em;
+
+}
+
 .service-card>* {
     position: relative;
     z-index: 2;
+   
 }
 
 .service-icon {
@@ -713,7 +725,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    
     transition: var(--transition);
 }
 
@@ -727,13 +739,15 @@ body {
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--cor-destaque);
-    margin-bottom: 1rem;
+  
 }
 
 .service-description {
     color: var(--cor-texto-claro);
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+    margin-bottom: 1em;
+    line-height: 1.3;
+    margin-left: 0.5em;
+
 }
 
 .service-features {

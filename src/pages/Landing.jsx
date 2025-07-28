@@ -19,8 +19,12 @@ import {
 
 import Reveal from '../components/Reveal'
 import '../pages/Landing.css'
+import Logo from '../assets/full-logo.webp'
 import Design1 from '../assets/design1.webp'
 import Banner from '../assets/banner1.webp'
+import Service1 from '../assets/service1.webp'
+import Service2 from '../assets/service2.webp'
+
 
 const MentFlowLanding = () => {
   const [headerVisible, setHeaderVisible] = useState(false)
@@ -103,16 +107,19 @@ const MentFlowLanding = () => {
       icon: MessageSquare,
       title: 'Terapia Online',
       description: 'Sessões de terapia por vídeo, áudio ou chat.',
+      image: Service1
     },
     {
       icon: Video,
       title: 'Conteúdo Exclusivo',
       description: 'Acesso a workshops e materiais de autoconhecimento.',
+      image: Service2
     },
     {
       icon: Users,
       title: 'Terapia em Grupo',
       description: 'Participe de sessões em grupo e compartilhe experiências.',
+      image: Service1
     },
   ]
 
@@ -168,9 +175,10 @@ const MentFlowLanding = () => {
       <header className={`header ${headerVisible ? 'visible' : ''}`}>
         <div className='container'>
           <div className='header-content'>
-            <a href='#' className='logo'>
+            <img src={Logo} className='logo' alt="" />
+            {/* <a href='#' className='logo'>
               MentFlow
-            </a>
+            </a> */}
             <nav className='desktop-nav'>
               <ul className='nav-menu'>
                 <li>
@@ -341,10 +349,13 @@ const MentFlowLanding = () => {
               {services.map((service, index) => (
                 <Reveal key={index}>
                   <div className='service-card'>
-                    <div className='service-icon'>
-                      <service.icon size={24} />
+                    <div className='service-card-title'>
+                      <div className='service-icon'>
+                        <service.icon size={24} />
+                      </div>
+                      <h3 className='service-title'>{service.title}</h3>
                     </div>
-                    <h3 className='service-title'>{service.title}</h3>
+                    <img src={service.image} className='service-image' alt="" />
                     <p className='service-description'>{service.description}</p>
                   </div>
                 </Reveal>
