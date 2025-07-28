@@ -20,7 +20,7 @@ import {
 import Reveal from '../components/Reveal'
 import '../pages/Landing.css'
 import BannerTest from '../assets/banner-test1.webp'
-import Banner from '../assets/banner.webp'
+import Banner from '../assets/banner1.webp'  
 
 const MentFlowLanding = () => {
   const [headerVisible, setHeaderVisible] = useState(false)
