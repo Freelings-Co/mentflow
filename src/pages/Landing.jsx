@@ -24,6 +24,7 @@ import Design1 from '../assets/design1.webp'
 import Banner from '../assets/banner1.webp'
 import Service1 from '../assets/service1.webp'
 import Service2 from '../assets/service2.webp'
+import Design2 from '../assets/design2.webp'
 
 
 const MentFlowLanding = () => {
@@ -371,8 +372,8 @@ const MentFlowLanding = () => {
           <div className='container'>
             <div className='audience-grid'>
               <div className='audience-content'>
-                <div className='section-badge'><h1>Para Quem?</h1></div>
-                <h2 className='section-title'>Ideal para você que busca:</h2>
+                <div className='section-badge'><h1 className='audience-badge'>Para Quem?</h1></div>
+                <h2 className='section-title' id='audience-title'>Ideal para você que busca:</h2>
                 <ul className='audience-list'>
                   {targetAudiences.map((audience, index) => (
                     <Reveal key={index}>
@@ -389,7 +390,7 @@ const MentFlowLanding = () => {
               <Reveal>
                 <div className='audience-image'>
                   <img
-                    src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+                    src={Design2}
                     alt='Pessoa em terapia'
                     className='audience-image-main'
                   />
