@@ -275,7 +275,7 @@ const MentFlowLanding = () => {
 
       {/* Como Funciona */}
       <Reveal>
-        <section className='section how-it-works' id='como-funciona'>
+        <section className='section-how-it-works' id='como-funciona'>
 
           <div className='how-works-image-box'>
             <img src={Design1} alt="" />
@@ -308,8 +308,8 @@ const MentFlowLanding = () => {
 
       {/* Benefícios */}
       <Reveal>
-        <section className='section benefits'>
-          <div className='container'>
+        <section className='section-benefits'>
+          <div className='section benefits'>
             <div className='section-header'>
               <div className='section-badge'><h1>Benefícios</h1></div>
               <h2 className='section-title'>Por que escolher a MentFlow?</h2>
@@ -329,6 +329,33 @@ const MentFlowLanding = () => {
                   </div>
                 </Reveal>
               ))}
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      {/* Missão, Visão e Valores */}
+      <Reveal>
+        <section className='section-mvv'>
+          <div className='container'>
+            <div className='section-header'>
+              <div className='section-badge'><h1>Missão, Visão e Valores</h1></div>
+              <h2 className='section-title'>Nossa Essência</h2>
+              <p className='section-subtitle'>Conheça o que nos move e orienta!</p>
+            </div>
+            <div className='mvv-grid'>
+              <div className='mvv-card'>
+                <h3 className='mvv-title'>Missão</h3>
+                <p className='mvv-text'>Cuidar da saúde mental se torna “protagonista” para viver bem e ter qualidade de vida. O caminho que se torna dia após dia... diretamente no seu crescimento pessoal e profissional.<br/><br/>A busca por autoconhecimento e autoconsciência contribuem para percepção de desequilíbrios psíquicos, possibilitando equilíbrio emocional.<br/><br/>Na pirâmide da inteligência emocional, existem escalas a serem percorridas e, ao buscar ajuda profissional, o processo é facilitado sendo possível identificar bloqueios emocionais que o impede de evoluir no âmbito laboral e acadêmico.</p>
+              </div>
+              <div className='mvv-card'>
+                <h3 className='mvv-title'>Visão</h3>
+                <p className='mvv-text'>“Busca-se ser referência no cuidado com a saúde emocional, conectando pessoas a uma rede confiável com profissionais parceiros, especializados, competentes e humanizados.<br/><br/>Com base na dedicação, persistência e constância, acreditamos que até 2030 estaremos bem consolidados no mercado.”</p>
+              </div>
+              <div className='mvv-card'>
+                <h3 className='mvv-title'>Valores</h3>
+                <p className='mvv-text'>Ética e confidencialidade, acolhimento e excelência, empatia, respeito à diversidade, atuação baseada em evidências, compromisso com resultados e inovação, além de espírito investigativo, com equipe ética e motivada sempre.</p>
+              </div>
             </div>
           </div>
         </section>

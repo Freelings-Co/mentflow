@@ -605,6 +605,52 @@ body {
 }
 
 /* Benefícios */
+
+/* Missão, Visão e Valores */
+.section-mvv {
+    padding: 6rem 0;
+    background: var(--cor-branco);
+}
+
+.mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.mvv-card {
+    background: var(--cor-background);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--sombra-suave);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: var(--transition);
+    border: 1px solid rgba(215, 160, 132, 0.07);
+}
+
+.mvv-card:hover {
+    box-shadow: var(--sombra-media);
+    border-color: var(--cor-primaria);
+    transform: translateY(-5px);
+}
+
+.mvv-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    margin-bottom: 1rem;
+}
+
+.mvv-text {
+    font-size: 1.05rem;
+    color: var(--cor-texto-claro);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
 .benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
