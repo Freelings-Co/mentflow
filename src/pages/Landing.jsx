@@ -28,6 +28,36 @@ import Design2 from '../assets/design2.webp'
 
 
 const MentFlowLanding = () => {
+  const [contato, setContato] = useState({ nome: '', email: '', telefone: '', mensagem: '' })
+  const [contatoStatus, setContatoStatus] = useState('')
+
+  // Gera link do WhatsApp com mensagem preenchida
+  const whatsappLink = `https://wa.me/SEUNUMERO?text=${encodeURIComponent(
+    `Nome: ${contato.nome}\nEmail: ${contato.email}\nTelefone: ${contato.telefone}\nMensagem: ${contato.mensagem}`
+  )}`
+
+  const handleContatoChange = (e) => {
+    const { name, value } = e.target
+    setContato((prev) => ({ ...prev, [name]: value }))
+  }
+
+  // Placeholder para lógica de envio por email (ex: EmailJS ou backend)
+  const handleContatoSubmit = async (e) => {
+    e.preventDefault()
+    setContatoStatus('Enviando...')
+    try {
+      // Aqui você pode integrar com EmailJS, Formspree ou seu backend
+      // Exemplo com EmailJS:
+      // await emailjs.send(/* ... */)
+      setTimeout(() => {
+        setContatoStatus('Mensagem enviada com sucesso!')
+        setContato({ nome: '', email: '', telefone: '', mensagem: '' })
+      }, 1200)
+    } catch (error) {
+      setContatoStatus('Erro ao enviar. Tente novamente.')
+    }
+  }
+
   const [headerVisible, setHeaderVisible] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -463,6 +493,42 @@ const MentFlowLanding = () => {
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+      </Reveal>
+
+      {/* Contato */}
+      <Reveal>
+        <section className='section contato' id='contato'>
+          <div className='container'>
+            <div className='section-header'>
+              <div className='section-badge'><h1>Contato</h1></div>
+              <h2 className='section-title'>Fale conosco</h2>
+              <p className='section-subtitle'>Tire suas dúvidas, envie sugestões ou solicite informações.</p>
+            </div>
+            <form className='contato-form' onSubmit={handleContatoSubmit}>
+              <div className='form-group'>
+                <label htmlFor='nome'>Nome</label>
+                <input type='text' id='nome' name='nome' value={contato.nome} onChange={handleContatoChange} required />
+              </div>
+              <div className='form-group'>
+                <label htmlFor='email'>Email</label>
+                <input type='email' id='email' name='email' value={contato.email} onChange={handleContatoChange} required />
+              </div>
+              <div className='form-group'>
+                <label htmlFor='telefone'>Telefone</label>
+                <input type='tel' id='telefone' name='telefone' value={contato.telefone} onChange={handleContatoChange} />
+              </div>
+              <div className='form-group'>
+                <label htmlFor='mensagem'>Dúvida ou Sugestão</label>
+                <textarea id='mensagem' name='mensagem' value={contato.mensagem} onChange={handleContatoChange} required />
+              </div>
+              <div className='contato-actions'>
+                <button type='submit' className='cta-button'>Enviar por Email</button>
+                <a href={whatsappLink} target='_blank' rel='noopener noreferrer' className='cta-button whatsapp-btn'>Enviar pelo WhatsApp</a>
+              </div>
+              {contatoStatus && <div className='contato-status'>{contatoStatus}</div>}
+            </form>
           </div>
         </section>
       </Reveal>
