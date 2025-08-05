@@ -724,10 +724,32 @@ body {
     margin-bottom: 0;
 }
 
+#ch {
+    display: none;
+}
+
+#ch:checked~.content {
+    display: block;
+}
+
+#ch:checked~label {
+    display: none;
+}
+
+.content {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    cursor: pointer;
+}
+
 .benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
+    padding: 0 1.5em;
 }
 
 .benefit-card {
@@ -1102,7 +1124,7 @@ body {
         padding-top: 10em;
     }
 
-     #how-works-header .section-subtitle {
+    #how-works-header .section-subtitle {
         margin: 0;
         max-width: 80%;
     }
@@ -1110,6 +1132,30 @@ body {
 }
 
 @media (max-width: 1200px) {
+
+    .audience-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 0;
+    }
+    .audience-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .audience-image-main {
+        width: 45em;
+        height: auto;
+        object-position: right;
+        margin: 0 auto;
+        padding: 0;
+        object-fit: cover;
+        border-radius: var(--border-radius-large);
+        box-shadow: var(--sombra-media);
+    }
 
     #como-funciona {
         flex-direction: column-reverse;
@@ -1129,7 +1175,7 @@ body {
 
     }
 
-      #how-works-header .section-subtitle {
+    #how-works-header .section-subtitle {
         margin: 0;
         max-width: 100%;
     }
@@ -1156,11 +1202,26 @@ body {
 
 @media (max-width: 843px) {
 
-     .how-works-image-box img{
+    .how-works-image-box img {
         width: 35em;
         height: 27em;
         padding-top: 0em;
-   
+
+    }
+
+    #how-works-header .section-subtitle {
+        font-size: 2.7vw;
+        max-width: 60vw;
+    }
+
+    .section-badge h1 {
+        font-size: 2.5em;
+    }
+
+    .section-title,
+    #audience-title {
+        padding-top: 5px;
+        font-size: 2em;
     }
 }
 
@@ -1208,7 +1269,8 @@ body {
     }
 
     .section-title {
-        font-size: 2rem;
+
+        font-size: 1.9em;
     }
 
     .cta-title {
@@ -1269,6 +1331,55 @@ body {
         padding: 1rem 1.5rem;
         font-size: 0.9rem;
     }
+
+
+
+    .how-works-image-box img {
+        width: 100vw;
+        height: auto;
+        padding-top: 0em;
+
+    }
+
+    #how-works-header .section-subtitle {
+        font-size: 2.7vw;
+        max-width: 60vw;
+    }
+
+    .section-badge h1 {
+        font-size: 8vw;
+    }
+
+    .step-title {
+        font-size: 1em;
+    }
+
+    .step-description {
+        font-size: 0.8em;
+    }
+
+    .section-title {
+        padding-top: 5px;
+        font-size: 6vw;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .section-badge h1 {
+        font-size: 7vw;
+    }
+
+    .section-title {
+        font-size: 5.5vw;
+    }
+
+    .section-subtitle {
+        max-width: 80%;
+        font-size: 1rem;
+    }
+
 }
 
 /* Animações de scroll suaves */
