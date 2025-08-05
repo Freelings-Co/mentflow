@@ -182,6 +182,7 @@ body {
     color: var(--cor-primaria);
 }
 
+
 .mobile-menu {
     position: absolute;
     top: 100%;
@@ -268,6 +269,7 @@ body {
     object-fit: cover;
     height: auto;
     margin: 0;
+    border-radius: 0;
 }
 
 
@@ -520,7 +522,7 @@ body {
 
     .section-subtitle {
         margin: 0;
-        max-width: 50%;
+        max-width: 65%;
     }
 
 }
@@ -610,6 +612,7 @@ body {
     padding: 6rem 0;
     background: var(--cor-branco);
 }
+
 .contato-form {
     max-width: 600px;
     margin: 0 auto;
@@ -621,16 +624,19 @@ body {
     flex-direction: column;
     gap: 1.5rem;
 }
+
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
+
 .form-group label {
     font-weight: 600;
     color: var(--cor-destaque);
     margin-bottom: 0.2rem;
 }
+
 .form-group input,
 .form-group textarea {
     padding: 0.8rem;
@@ -642,11 +648,13 @@ body {
     resize: none;
     transition: border 0.2s;
 }
+
 .form-group input:focus,
 .form-group textarea:focus {
     border: 1.5px solid var(--cor-destaque);
     outline: none;
 }
+
 .contato-actions {
     display: flex;
     gap: 1rem;
@@ -654,13 +662,16 @@ body {
     justify-content: flex-end;
     margin-top: 1rem;
 }
+
 .cta-button.whatsapp-btn {
     background: #25d366;
     color: #fff;
 }
+
 .cta-button.whatsapp-btn:hover {
     background: #128c7e;
 }
+
 .contato-status {
     margin-top: 1rem;
     color: var(--cor-primaria);
@@ -1078,6 +1089,53 @@ body {
 }
 
 /* Responsividade */
+
+@media (max-width: 1360px) {
+
+    .steps-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    .how-works-image-box img {
+        width: 70vw;
+        height: 40em;
+        padding-top: 10em;
+    }
+
+     #how-works-header .section-subtitle {
+        margin: 0;
+        max-width: 80%;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    #como-funciona {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #how-works-header {
+        align-items: center;
+        text-align: center;
+    }
+
+    .how-works-image-box img {
+        width: 47em;
+        height: 35em;
+        padding-top: 0em;
+
+    }
+
+      #how-works-header .section-subtitle {
+        margin: 0;
+        max-width: 100%;
+    }
+
+}
+
 @media (max-width: 1024px) {
     .container {
         padding: 0 1.5rem;
@@ -1096,7 +1154,23 @@ body {
     }
 }
 
+@media (max-width: 843px) {
+
+     .how-works-image-box img{
+        width: 35em;
+        height: 27em;
+        padding-top: 0em;
+   
+    }
+}
+
 @media (max-width: 768px) {
+    .hero img {
+
+        content: url(../assets/banner-mobile.webp);
+
+    }
+
     .desktop-nav {
         display: none;
     }
