@@ -357,25 +357,6 @@ body {
     animation: fadeInUp 1s ease-out 0.8s both;
 }
 
-.cta-button-large {
-    background: var(--gradient-primary);
-    color: var(--cor-branco);
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: var(--transition);
-    box-shadow: var(--sombra-colorida);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.cta-button-large:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 60px rgba(215, 160, 132, 0.4);
-}
 
 .cta-button-secondary {
     background: transparent;
@@ -408,6 +389,29 @@ body {
     box-shadow: var(--sombra-forte);
     animation: fadeIn 1s ease-out 1s both;
 } */
+
+
+.cta-button-large {
+    background:  linear-gradient(135deg, rgba(253, 230, 220, 0.7), rgba(215, 160, 132, 0.7));
+    color: var(--cor-destaque);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    box-shadow: var(--sombra-colorida);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-button-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(215, 160, 132, 0.4);
+}
+
 
 /* Animações */
 @keyframes slideInLeft {
@@ -1076,7 +1080,7 @@ body {
     margin-right: auto;
 }
 
-.cta-button-large {
+/* .cta-button-large {
     background: var(--cor-branco);
     color: var(--cor-destaque);
     box-shadow: var(--sombra-media);
@@ -1086,7 +1090,7 @@ body {
     background: var(--cor-background);
     transform: translateY(-3px);
     box-shadow: var(--sombra-forte);
-}
+} */
 
 /* Responsividade */
 

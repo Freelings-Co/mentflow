@@ -25,6 +25,7 @@ import Banner from '../assets/banner1.webp'
 import Service1 from '../assets/service1.webp'
 import Service2 from '../assets/service2.webp'
 import Design2 from '../assets/design2.webp'
+import { ArrowRightIcon } from '@phosphor-icons/react'
 
 
 const MentFlowLanding = () => {
@@ -545,7 +546,7 @@ const MentFlowLanding = () => {
               </p>
               <a href='#agendar' className='cta-button-large'>
                 Agendar Primeira Consulta
-                <ArrowRight size={20} />
+                <ArrowRightIcon size={32} weight='bold' />
               </a>
             </div>
           </div>
