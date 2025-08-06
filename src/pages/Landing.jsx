@@ -17,6 +17,10 @@ import {
   X,
 } from 'lucide-react'
 
+import AnaSilva from '../assets/ana-silva.webp'
+import CarlosSouza from '../assets/carlos-souza.webp'
+import MarianaLima from '../assets/mariana-lima.webp'
+
 import Reveal from '../components/Reveal'
 import '../pages/Landing.css'
 import Logo from '../assets/full-logo.webp'
@@ -181,7 +185,7 @@ const MentFlowLanding = () => {
       content:
         'A MentFlow mudou minha vida. Encontrei um terapeuta incrível que realmente me entende. A plataforma é fácil de usar e as sessões online são muito convenientes.',
       stars: 5,
-      avatar: 'https://i.pravatar.cc/150?img=1',
+      avatar: AnaSilva,
     },
     {
       author: 'Carlos Souza',
@@ -189,7 +193,7 @@ const MentFlowLanding = () => {
       content:
         'Estava cético no início, mas a experiência superou minhas expectativas. O processo de match foi rápido e eficiente, e meu terapeuta é excelente. Recomendo a todos!',
       stars: 5,
-      avatar: 'https://i.pravatar.cc/150?img=2',
+      avatar: CarlosSouza,
     },
     {
       author: 'Mariana Lima',
@@ -197,7 +201,7 @@ const MentFlowLanding = () => {
       content:
         'Finalmente encontrei uma forma de cuidar da minha saúde mental que se encaixa na minha rotina. A flexibilidade de horários é um grande diferencial. Estou muito feliz!',
       stars: 5,
-      avatar: 'https://i.pravatar.cc/150?img=3',
+      avatar: MarianaLima,
     },
   ]
 
