@@ -28,6 +28,7 @@ import Design1 from '../assets/design1.webp'
 import Banner from '../assets/banner1.webp'
 import Service1 from '../assets/service1.webp'
 import Service2 from '../assets/service2.webp'
+import Service3 from '../assets/service3.webp'
 import Design2 from '../assets/design2.webp'
 import { ArrowRightIcon } from '@phosphor-icons/react'
 
@@ -155,7 +156,7 @@ const MentFlowLanding = () => {
       icon: Users,
       title: 'Terapia em Grupo',
       description: 'Participe de sessões em grupo e compartilhe experiências.',
-      image: Service1
+      image: Service3
     },
   ]
 
