@@ -30,7 +30,7 @@ import Service1 from '../assets/service1.webp'
 import Service2 from '../assets/service2.webp'
 import Service3 from '../assets/service3.webp'
 import Design2 from '../assets/design2.webp'
-import { ArrowRightIcon } from '@phosphor-icons/react'
+import { ArrowRightIcon, Target, Brain, Eye } from '@phosphor-icons/react'
 
 
 const MentFlowLanding = () => {
@@ -381,56 +381,56 @@ const MentFlowLanding = () => {
             </div>
             <div className='mvv-grid'>
               <div className='mvv-card'>
-  <div className='mvv-icon'><Shield size={36} /></div>
-  <h3 className='mvv-title'>Missão</h3>
-  <input type="checkbox" id="mvv-missao-toggle" className="mvv-toggle" />
-  <div className="mvv-text-wrapper">
-    <p className="mvv-text mvv-text-truncada">
-      Cuidar da saúde mental se torna “protagonista” para viver bem e ter qualidade de vida. O caminho que se torna dia após dia... diretamente no seu crescimento pessoal e profissional.
+                <div className='mvv-icon'><Target size={50} /></div>
+                <h3 className='mvv-title'>Missão</h3>
+                <input type="checkbox" id="mvv-missao-toggle" className="mvv-toggle" />
+                <div className="mvv-text-wrapper">
+                  <p className="mvv-text mvv-text-truncada">
+                    Cuidar da saúde mental se torna “protagonista” para viver bem e ter qualidade de vida. O caminho que se torna dia após dia... diretamente no seu crescimento pessoal e profissional.
 
-      <span className="mvv-text-restante">
-        <br/><br/>
-        A busca por autoconhecimento e autoconsciência contribuem para percepção de desequilíbrios psíquicos, possibilitando equilíbrio emocional.<br/><br/>
-        Na pirâmide da inteligência emocional, existem escalas a serem percorridas e, ao buscar ajuda profissional, o processo é facilitado sendo possível identificar bloqueios emocionais que o impede de evoluir no âmbito laboral e acadêmico.
-      </span>
-    </p>
-    <label htmlFor="mvv-missao-toggle" className="mvv-toggle-label ler-mais">Ler mais</label>
-    <label htmlFor="mvv-missao-toggle" className="mvv-toggle-label ler-menos">Ler menos</label>
-  </div>
-</div>
+                    <span className="mvv-text-restante">
+                      <br /><br />
+                      A busca por autoconhecimento e autoconsciência contribuem para percepção de desequilíbrios psíquicos, possibilitando equilíbrio emocional.<br /><br />
+                      Na pirâmide da inteligência emocional, existem escalas a serem percorridas e, ao buscar ajuda profissional, o processo é facilitado sendo possível identificar bloqueios emocionais que o impede de evoluir no âmbito laboral e acadêmico.
+                    </span>
+                  </p>
+                  <label htmlFor="mvv-missao-toggle" className="mvv-toggle-label ler-mais">Ler mais</label>
+                  <label htmlFor="mvv-missao-toggle" className="mvv-toggle-label ler-menos">Ler menos</label>
+                </div>
+              </div>
               <div className='mvv-card'>
-  <div className='mvv-icon'><Users size={36} /></div>
-  <h3 className='mvv-title'>Visão</h3>
-  <input type="checkbox" id="mvv-visao-toggle" className="mvv-toggle" />
-  <div className="mvv-text-wrapper">
-    <p className="mvv-text mvv-text-truncada">
-      Busca-se ser referência no cuidado com a saúde emocional, conectando pessoas a uma rede confiável com profissionais parceiros, especializados, competentes e humanizados.
-    
-      <span className="mvv-text-restante">
-        <br/><br/>
-        Com base na dedicação, persistência e constância, acreditamos que até 2030 estaremos bem consolidados no mercado
-      </span>
-    </p>
-    <label htmlFor="mvv-visao-toggle" className="mvv-toggle-label ler-mais">Ler mais</label>
-    <label htmlFor="mvv-visao-toggle" className="mvv-toggle-label ler-menos">Ler menos</label>
-  </div>
-</div>
+                <div className='mvv-icon'><Eye size={36} /></div>
+                <h3 className='mvv-title'>Visão</h3>
+                <input type="checkbox" id="mvv-visao-toggle" className="mvv-toggle" />
+                <div className="mvv-text-wrapper">
+                  <p className="mvv-text mvv-text-truncada">
+                    Busca-se ser referência no cuidado com a saúde emocional, conectando pessoas a uma rede confiável com profissionais parceiros, especializados, competentes e humanizados.
+
+                    <span className="mvv-text-restante">
+                      <br /><br />
+                      Com base na dedicação, persistência e constância, acreditamos que até 2030 estaremos bem consolidados no mercado
+                    </span>
+                  </p>
+                  <label htmlFor="mvv-visao-toggle" className="mvv-toggle-label ler-mais">Ler mais</label>
+                  <label htmlFor="mvv-visao-toggle" className="mvv-toggle-label ler-menos">Ler menos</label>
+                </div>
+              </div>
               <div className='mvv-card'>
-  <div className='mvv-icon'><Heart size={36} /></div>
-  <h3 className='mvv-title'>Valores</h3>
-  <input type="checkbox" id="mvv-valores-toggle" className="mvv-toggle" />
-  <div className="mvv-text-wrapper">
-    <p className="mvv-text mvv-text-truncada">
-      Ética e confidencialidade, acolhimento e excelência, empatia, respeito à diversidade, atuação baseada em evidências, compromisso com resultados e inovação
-   
-      <span className="mvv-text-restante">
-        , além de espírito investigativo, com equipe ética e motivada sempre.
-      </span>
-    </p>
-    <label htmlFor="mvv-valores-toggle" className="mvv-toggle-label ler-mais">Ler mais</label>
-    <label htmlFor="mvv-valores-toggle" className="mvv-toggle-label ler-menos">Ler menos</label>
-  </div>
-</div>
+                <div className='mvv-icon'><Brain size={36} /></div>
+                <h3 className='mvv-title'>Valores</h3>
+                <input type="checkbox" id="mvv-valores-toggle" className="mvv-toggle" />
+                <div className="mvv-text-wrapper">
+                  <p className="mvv-text mvv-text-truncada">
+                    Ética e confidencialidade, acolhimento e excelência, empatia, respeito à diversidade, atuação baseada em evidências, compromisso com resultados e inovação
+
+                    <span className="mvv-text-restante">
+                      , além de espírito investigativo, com equipe ética e motivada sempre.
+                    </span>
+                  </p>
+                  <label htmlFor="mvv-valores-toggle" className="mvv-toggle-label ler-mais">Ler mais</label>
+                  <label htmlFor="mvv-valores-toggle" className="mvv-toggle-label ler-menos">Ler menos</label>
+                </div>
+              </div>
             </div>
           </div>
         </section>
