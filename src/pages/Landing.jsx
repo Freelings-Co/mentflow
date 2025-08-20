@@ -90,7 +90,7 @@ const MentFlowLanding = () => {
       number: 1,
       title: '01. Cadastro Personalizado',
       description:
-        'Conte sua história e preferências para encontrarmos o terapeuta ideal para você.',
+        'Selecione o que faz sentido para você e encontre o profissional ideal.',
     },
     {
       number: 2,
