@@ -768,16 +768,6 @@ body {
     z-index: -1;
 }
 
-.mvv-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: 11em;
-    transition: max-height 0.4s;
-}
-
 .mvv-text-restante {
     display: none;
 }
@@ -789,15 +779,19 @@ body {
 /* Toggle Missão */
 #mvv-missao-toggle:checked ~ .mvv-text-wrapper .mvv-text {
     -webkit-line-clamp: unset;
+    line-clamp: unset;
     max-height: none;
     display: block;
 }
+
 #mvv-missao-toggle:checked ~ .mvv-text-wrapper .mvv-text-restante {
     display: inline;
 }
+
 #mvv-missao-toggle:checked ~ .mvv-text-wrapper .ler-mais {
     display: none;
 }
+
 #mvv-missao-toggle:checked ~ .mvv-text-wrapper .ler-menos {
     display: block;
 }
@@ -805,15 +799,19 @@ body {
 /* Toggle Visão */
 #mvv-visao-toggle:checked ~ .mvv-text-wrapper .mvv-text {
     -webkit-line-clamp: unset;
+    line-clamp: unset;
     max-height: none;
     display: block;
 }
+
 #mvv-visao-toggle:checked ~ .mvv-text-wrapper .mvv-text-restante {
     display: inline;
 }
+
 #mvv-visao-toggle:checked ~ .mvv-text-wrapper .ler-mais {
     display: none;
 }
+
 #mvv-visao-toggle:checked ~ .mvv-text-wrapper .ler-menos {
     display: block;
 }
@@ -821,15 +819,19 @@ body {
 /* Toggle Valores */
 #mvv-valores-toggle:checked ~ .mvv-text-wrapper .mvv-text {
     -webkit-line-clamp: unset;
+    line-clamp: unset;
     max-height: none;
     display: block;
 }
+
 #mvv-valores-toggle:checked ~ .mvv-text-wrapper .mvv-text-restante {
     display: inline;
 }
+
 #mvv-valores-toggle:checked ~ .mvv-text-wrapper .ler-mais {
     display: none;
 }
+
 #mvv-valores-toggle:checked ~ .mvv-text-wrapper .ler-menos {
     display: block;
 }
@@ -852,8 +854,10 @@ body {
 @media (max-width: 600px) {
     .mvv-text {
         -webkit-line-clamp: 5;
+        line-clamp: 5;
         max-height: 8em;
     }
+
     .mvv-text-wrapper {
         min-height: 5.5em;
     }
@@ -1390,7 +1394,7 @@ label {
 
     }
 
-  
+
 
     .hero-content {
         grid-template-columns: 1fr;
@@ -1440,7 +1444,7 @@ label {
         width: 11em;
         object-fit: cover;
         height: 3em;
-      
+
     }
 
     .header-content {
@@ -1497,7 +1501,7 @@ label {
         width: 8em;
         object-fit: cover;
         height: 3em;
-      
+
     }
 
 
@@ -1543,7 +1547,7 @@ label {
 
     }
 
-        #audience-title {
+    #audience-title {
         padding-top: 1px;
         font-size: 1.5em;
         max-width: 100%;
