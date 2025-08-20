@@ -391,7 +391,7 @@ body {
 
 
 .cta-button-large {
-    background:  linear-gradient(135deg, rgba(253, 230, 220, 0.7), rgba(215, 160, 132, 0.7));
+    background: linear-gradient(135deg, rgba(253, 230, 220, 0.7), rgba(215, 160, 132, 0.7));
     color: var(--cor-destaque);
     padding: 1rem 2rem;
     border-radius: var(--border-radius);
@@ -705,6 +705,29 @@ body {
     align-items: flex-start;
     transition: var(--transition);
     border: 1px solid rgba(215, 160, 132, 0.07);
+    position: relative;
+    overflow: hidden;
+}
+
+.mvv-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cor-primaria-light);
+    color: var(--cor-primaria);
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    box-shadow: var(--sombra-suave);
+    transition: background 0.2s, color 0.2s;
+}
+
+.mvv-card:hover .mvv-icon {
+    background: var(--cor-primaria);
+    color: var(--cor-branco);
+    transform: scale(1.08);
 }
 
 .mvv-card:hover {
@@ -725,11 +748,117 @@ body {
     color: var(--cor-texto-claro);
     line-height: 1.7;
     margin-bottom: 0;
+    transition: max-height 0.4s;
 }
 
-#ch {
+.mvv-text-wrapper {
+    width: 100%;
+    position: relative;
+    min-height: 7.5em;
+}
+
+.mvv-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+}
+
+.mvv-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 11em;
+    transition: max-height 0.4s;
+}
+
+.mvv-text-restante {
     display: none;
 }
+
+.mvv-toggle-label.ler-menos {
+    display: none;
+}
+
+/* Toggle Missão */
+#mvv-missao-toggle:checked ~ .mvv-text-wrapper .mvv-text {
+    -webkit-line-clamp: unset;
+    max-height: none;
+    display: block;
+}
+#mvv-missao-toggle:checked ~ .mvv-text-wrapper .mvv-text-restante {
+    display: inline;
+}
+#mvv-missao-toggle:checked ~ .mvv-text-wrapper .ler-mais {
+    display: none;
+}
+#mvv-missao-toggle:checked ~ .mvv-text-wrapper .ler-menos {
+    display: block;
+}
+
+/* Toggle Visão */
+#mvv-visao-toggle:checked ~ .mvv-text-wrapper .mvv-text {
+    -webkit-line-clamp: unset;
+    max-height: none;
+    display: block;
+}
+#mvv-visao-toggle:checked ~ .mvv-text-wrapper .mvv-text-restante {
+    display: inline;
+}
+#mvv-visao-toggle:checked ~ .mvv-text-wrapper .ler-mais {
+    display: none;
+}
+#mvv-visao-toggle:checked ~ .mvv-text-wrapper .ler-menos {
+    display: block;
+}
+
+/* Toggle Valores */
+#mvv-valores-toggle:checked ~ .mvv-text-wrapper .mvv-text {
+    -webkit-line-clamp: unset;
+    max-height: none;
+    display: block;
+}
+#mvv-valores-toggle:checked ~ .mvv-text-wrapper .mvv-text-restante {
+    display: inline;
+}
+#mvv-valores-toggle:checked ~ .mvv-text-wrapper .ler-mais {
+    display: none;
+}
+#mvv-valores-toggle:checked ~ .mvv-text-wrapper .ler-menos {
+    display: block;
+}
+
+.mvv-toggle-label {
+    color: var(--cor-primaria);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: color 0.2s;
+    text-align: left;
+}
+
+.mvv-toggle-label:hover {
+    color: var(--cor-destaque);
+}
+
+@media (max-width: 600px) {
+    .mvv-text {
+        -webkit-line-clamp: 5;
+        max-height: 8em;
+    }
+    .mvv-text-wrapper {
+        min-height: 5.5em;
+    }
+}
+
 
 #ch:checked~.content {
     display: block;
@@ -750,9 +879,9 @@ label {
 
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 1.5rem;
-    padding: 0 1.5em;
+    padding: 0 4.5em;
 }
 
 .benefit-card {
@@ -1057,18 +1186,9 @@ label {
     text-align: center;
     position: relative;
     overflow: hidden;
+    padding: 2em 0;
 }
 
-.cta-final::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    animation: rotate 20s linear infinite;
-}
 
 @keyframes rotate {
     from {
@@ -1096,7 +1216,7 @@ label {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     opacity: 0.9;
-    max-width: 600px;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1136,12 +1256,13 @@ label {
 
 @media (max-width: 1200px) {
 
-    .audience-content{
+    .audience-content {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding-right: 0;
     }
+
     .audience-grid {
         display: flex;
         flex-direction: column;
@@ -1185,6 +1306,12 @@ label {
 
 }
 
+@media (max-width: 1100px) {
+    .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
 @media (max-width: 1024px) {
     .container {
         padding: 0 1.5rem;
@@ -1201,6 +1328,20 @@ label {
     .audience-grid {
         gap: 3rem;
     }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .cta-button {
+        display: none;
+    }
+
+
 }
 
 @media (max-width: 843px) {
@@ -1228,6 +1369,20 @@ label {
     }
 }
 
+@media (max-width: 779px) {
+
+    .service-card {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .service-image {
+
+        height: 25em;
+
+    }
+}
+
 @media (max-width: 768px) {
     .hero img {
 
@@ -1235,17 +1390,7 @@ label {
 
     }
 
-    .desktop-nav {
-        display: none;
-    }
-
-    .mobile-menu-toggle {
-        display: block;
-    }
-
-    .cta-button {
-        display: none;
-    }
+  
 
     .hero-content {
         grid-template-columns: 1fr;
@@ -1287,7 +1432,19 @@ label {
     }
 
     .benefits-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 0 3em;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .logo {
+        width: 11em;
+        object-fit: cover;
+        height: 3em;
+      
+    }
+
+    .header-content {
+        padding: 0.2rem 0;
     }
 }
 
@@ -1336,6 +1493,13 @@ label {
     }
 
 
+    .logo {
+        width: 8em;
+        object-fit: cover;
+        height: 3em;
+      
+    }
+
 
     .how-works-image-box img {
         width: 100vw;
@@ -1366,6 +1530,24 @@ label {
         font-size: 6vw;
     }
 
+
+
+    .service-card {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .service-image {
+
+        height: auto;
+
+    }
+
+        #audience-title {
+        padding-top: 1px;
+        font-size: 1.5em;
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
