@@ -377,15 +377,15 @@ const MentFlowLanding = () => {
             <div className='mvv-grid'>
               <div className='mvv-card'>
                 <h3 className='mvv-title'>Missão</h3>
-                <p className='mvv-text'>Cuidar da saúde mental se torna “protagonista” para viver bem e ter qualidade de vida. O caminho que se torna dia após dia... diretamente no seu crescimento pessoal e profissional.<br/><br/>A busca por autoconhecimento e autoconsciência contribuem para percepção de desequilíbrios psíquicos, possibilitando equilíbrio emocional.<br/><br/>Na pirâmide da inteligência emocional, existem escalas a serem percorridas e, ao buscar ajuda profissional, o processo é facilitado sendo possível identificar bloqueios emocionais que o impede de evoluir no âmbito laboral e acadêmico.</p>
+                <p className='mvv-text'>"Promover o equilíbrio emocional e o bem-estar, impulsionando o crescimento pessoal e profissional."</p>
               </div>
               <div className='mvv-card'>
                 <h3 className='mvv-title'>Visão</h3>
-                <p className='mvv-text'>“Busca-se ser referência no cuidado com a saúde emocional, conectando pessoas a uma rede confiável com profissionais parceiros, especializados, competentes e humanizados.<br/><br/>Com base na dedicação, persistência e constância, acreditamos que até 2030 estaremos bem consolidados no mercado.”</p>
+                <p className='mvv-text'>"Ser referência no cuidado da saúde emocional, conectando pessoas a profissionais confiáveis, especializados e humanizados."</p>
               </div>
               <div className='mvv-card'>
                 <h3 className='mvv-title'>Valores</h3>
-                <p className='mvv-text'>Ética e confidencialidade, acolhimento e excelência, empatia, respeito à diversidade, atuação baseada em evidências, compromisso com resultados e inovação, além de espírito investigativo, com equipe ética e motivada sempre.</p>
+                <p className='mvv-text'>"Ética e sigilo, acolhimento de verdade, respeito à diversidade, ciência que faz a diferença e inovação constante, tudo para transformar sua saúde emocional."</p>
               </div>
             </div>
           </div>
