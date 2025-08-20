@@ -17,6 +17,10 @@ import {
   X,
 } from 'lucide-react'
 
+import AnaSilva from '../assets/ana-silva.webp'
+import CarlosSouza from '../assets/carlos-souza.webp'
+import MarianaLima from '../assets/mariana-lima.webp'
+
 import Reveal from '../components/Reveal'
 import '../pages/Landing.css'
 import Logo from '../assets/full-logo.webp'
@@ -24,8 +28,9 @@ import Design1 from '../assets/design1.webp'
 import Banner from '../assets/banner1.webp'
 import Service1 from '../assets/service1.webp'
 import Service2 from '../assets/service2.webp'
+import Service3 from '../assets/service3.webp'
 import Design2 from '../assets/design2.webp'
-import { ArrowRightIcon } from '@phosphor-icons/react'
+import { ArrowRightIcon, Target, Brain, Eye } from '@phosphor-icons/react'
 
 
 const MentFlowLanding = () => {
@@ -151,7 +156,7 @@ const MentFlowLanding = () => {
       icon: Users,
       title: 'Terapia em Grupo',
       description: 'Participe de sessões em grupo e compartilhe experiências.',
-      image: Service1
+      image: Service3
     },
   ]
 
@@ -181,7 +186,7 @@ const MentFlowLanding = () => {
       content:
         'A MentFlow mudou minha vida. Encontrei um terapeuta incrível que realmente me entende. A plataforma é fácil de usar e as sessões online são muito convenientes.',
       stars: 5,
-      avatar: 'https://i.pravatar.cc/150?img=1',
+      avatar: AnaSilva,
     },
     {
       author: 'Carlos Souza',
@@ -189,7 +194,7 @@ const MentFlowLanding = () => {
       content:
         'Estava cético no início, mas a experiência superou minhas expectativas. O processo de match foi rápido e eficiente, e meu terapeuta é excelente. Recomendo a todos!',
       stars: 5,
-      avatar: 'https://i.pravatar.cc/150?img=2',
+      avatar: CarlosSouza,
     },
     {
       author: 'Mariana Lima',
@@ -197,7 +202,7 @@ const MentFlowLanding = () => {
       content:
         'Finalmente encontrei uma forma de cuidar da minha saúde mental que se encaixa na minha rotina. A flexibilidade de horários é um grande diferencial. Estou muito feliz!',
       stars: 5,
-      avatar: 'https://i.pravatar.cc/150?img=3',
+      avatar: MarianaLima,
     },
   ]
 
@@ -376,16 +381,55 @@ const MentFlowLanding = () => {
             </div>
             <div className='mvv-grid'>
               <div className='mvv-card'>
+                <div className='mvv-icon'><Target size={50} /></div>
                 <h3 className='mvv-title'>Missão</h3>
-                <p className='mvv-text'>"Promover o equilíbrio emocional e o bem-estar, impulsionando o crescimento pessoal e profissional."</p>
+                <input type="checkbox" id="mvv-missao-toggle" className="mvv-toggle" />
+                <div className="mvv-text-wrapper">
+                  <p className="mvv-text mvv-text-truncada">
+                    Cuidar da saúde mental se torna “protagonista” para viver bem e ter qualidade de vida. O caminho que se torna dia após dia... diretamente no seu crescimento pessoal e profissional.
+
+                    <span className="mvv-text-restante">
+                      <br /><br />
+                      A busca por autoconhecimento e autoconsciência contribuem para percepção de desequilíbrios psíquicos, possibilitando equilíbrio emocional.<br /><br />
+                      Na pirâmide da inteligência emocional, existem escalas a serem percorridas e, ao buscar ajuda profissional, o processo é facilitado sendo possível identificar bloqueios emocionais que o impede de evoluir no âmbito laboral e acadêmico.
+                    </span>
+                  </p>
+                  <label htmlFor="mvv-missao-toggle" className="mvv-toggle-label ler-mais">Ler mais</label>
+                  <label htmlFor="mvv-missao-toggle" className="mvv-toggle-label ler-menos">Ler menos</label>
+                </div>
               </div>
               <div className='mvv-card'>
+                <div className='mvv-icon'><Eye size={36} /></div>
                 <h3 className='mvv-title'>Visão</h3>
-                <p className='mvv-text'>"Ser referência no cuidado da saúde emocional, conectando pessoas a profissionais confiáveis, especializados e humanizados."</p>
+                <input type="checkbox" id="mvv-visao-toggle" className="mvv-toggle" />
+                <div className="mvv-text-wrapper">
+                  <p className="mvv-text mvv-text-truncada">
+                    Busca-se ser referência no cuidado com a saúde emocional, conectando pessoas a uma rede confiável com profissionais parceiros, especializados, competentes e humanizados.
+
+                    <span className="mvv-text-restante">
+                      <br /><br />
+                      Com base na dedicação, persistência e constância, acreditamos que até 2030 estaremos bem consolidados no mercado
+                    </span>
+                  </p>
+                  <label htmlFor="mvv-visao-toggle" className="mvv-toggle-label ler-mais">Ler mais</label>
+                  <label htmlFor="mvv-visao-toggle" className="mvv-toggle-label ler-menos">Ler menos</label>
+                </div>
               </div>
               <div className='mvv-card'>
+                <div className='mvv-icon'><Brain size={36} /></div>
                 <h3 className='mvv-title'>Valores</h3>
-                <p className='mvv-text'>"Ética e sigilo, acolhimento de verdade, respeito à diversidade, ciência que faz a diferença e inovação constante, tudo para transformar sua saúde emocional."</p>
+                <input type="checkbox" id="mvv-valores-toggle" className="mvv-toggle" />
+                <div className="mvv-text-wrapper">
+                  <p className="mvv-text mvv-text-truncada">
+                    Ética e confidencialidade, acolhimento e excelência, empatia, respeito à diversidade, atuação baseada em evidências, compromisso com resultados e inovação
+
+                    <span className="mvv-text-restante">
+                      , além de espírito investigativo, com equipe ética e motivada sempre.
+                    </span>
+                  </p>
+                  <label htmlFor="mvv-valores-toggle" className="mvv-toggle-label ler-mais">Ler mais</label>
+                  <label htmlFor="mvv-valores-toggle" className="mvv-toggle-label ler-menos">Ler menos</label>
+                </div>
               </div>
             </div>
           </div>
