@@ -17,7 +17,7 @@ import {
   X,
 } from 'lucide-react'
 
-import AnaSilva from '../assets/ana-silva.webp'
+import JanaRibas from '../assets/lgbtw.webp'
 import CarlosSouza from '../assets/carlos-souza.webp'
 import MarianaLima from '../assets/mariana-lima.webp'
 
@@ -27,7 +27,7 @@ import Logo from '../assets/full-logo.webp'
 import Design1 from '../assets/design1.webp'
 import Banner from '../assets/banner1.webp'
 import Service1 from '../assets/service1.webp'
-import Service2 from '../assets/service2.webp'
+import Service2 from '../assets/service2alt.webp'
 import Service3 from '../assets/service3.webp'
 import Design2 from '../assets/design2.webp'
 import { ArrowRightIcon, Target, Brain, Eye } from '@phosphor-icons/react'
@@ -181,26 +181,25 @@ const MentFlowLanding = () => {
 
   const testimonials = [
     {
-      author: 'Ana Silva',
-      role: 'Cliente Satisfeita',
-      content:
-        'A MentFlow mudou minha vida. Encontrei um terapeuta incrível que realmente me entende. A plataforma é fácil de usar e as sessões online são muito convenientes.',
+      author: 'Jana Ribas',
+      role: 'Designer gráfica',
+      content: `" Sempre procurei um espaço onde eu pudesse ser ouvida de verdade, sem julgamentos. Aqui encontrei um terapeuta que me entende, me respeita e me ajuda a crescer como pessoa e profissional. A plataforma é prática, fácil de usar! "`,
       stars: 5,
-      avatar: AnaSilva,
+      avatar: JanaRibas,
     },
     {
-      author: 'Carlos Souza',
-      role: 'Cliente Satisfeito',
+      author: 'Enzo Schulz',
+      role: 'Consultor imobiliário',
       content:
-        'Estava cético no início, mas a experiência superou minhas expectativas. O processo de match foi rápido e eficiente, e meu terapeuta é excelente. Recomendo a todos!',
+        `" Confesso que estava bem cético no começo, mas a MentFlow superou minhas expectativas. O processo de match foi rápido, encontrei um terapeuta incrível e as sessões têm feito muita diferença pra mim. Hoje recomendo de olhos fechados. "`,
       stars: 5,
       avatar: CarlosSouza,
     },
     {
-      author: 'Mariana Lima',
-      role: 'Cliente Satisfeita',
+      author: 'Mariana Pedrozo',
+      role: 'Gestora de RH',
       content:
-        'Finalmente encontrei uma forma de cuidar da minha saúde mental que se encaixa na minha rotina. A flexibilidade de horários é um grande diferencial. Estou muito feliz!',
+       `" Finalmente encontrei uma forma prática e consistente de cuidar da minha saúde mental. A flexibilidade de horários fez toda a diferença para equilibrar minhas responsabilidades do dia a dia. Me sinto muito mais feliz e em equilíbrio desde que comecei. "`,
       stars: 5,
       avatar: MarianaLima,
     },
