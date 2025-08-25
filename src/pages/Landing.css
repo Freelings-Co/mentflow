@@ -894,13 +894,13 @@ label {
     border-radius: var(--border-radius);
     text-align: center;
     transition: var(--transition);
-    border: 1px solid rgba(215, 160, 132, 0.1);
+    border: 1px groove rgba(134, 240, 231, 0.4);
 }
 
 .benefit-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--sombra-media);
-    border-color: var(--cor-primaria);
+    border-color:  groove var(--cor-primaria);
 }
 
 .benefit-icon {
