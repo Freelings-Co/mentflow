@@ -950,8 +950,9 @@ label {
 
 .service-image {
     width: 100%;
-    height: 12em;
-    object-position: top;
+    /* height: 12em; */
+     height: 16em;
+    object-position: center;
     object-fit: cover;
 }
 
