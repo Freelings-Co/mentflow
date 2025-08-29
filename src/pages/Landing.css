@@ -41,7 +41,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: var(--cor-background);
+    background: var(--cor-branco);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(215, 160, 132, 0.1);
     transform: translateY(-100%);
@@ -130,8 +130,8 @@ body {
 }
 
 .cta-button {
-    background: var(--cor-destaque);
-    color: var(--cor-primaria);
+    background: var(--cor-primaria);
+    color: var(--cor-branco);
     padding: 0.8rem 1.8rem;
     border-radius: var(--border-radius);
     text-decoration: none;
@@ -147,7 +147,7 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 2px 18px var(--cor-primaria);
     color: var(--cor-branco);
-    background: var(--cor-primaria);
+    background: var(--cor-destaque);
 }
 
 /* Mobile Menu */
@@ -630,8 +630,8 @@ body {
 .form-group textarea {
     padding: 0.8rem;
     border-radius: var(--border-radius);
-    border: 1px solid var(--cor-primaria);
-    background: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+    background: var(--cor-background);
     font-size: 1rem;
     color: var(--cor-branco);
     resize: none;
