@@ -1,37 +1,39 @@
 :root {
-  /* Nova paleta de cores */
-    --cor-primaria: #d7a084;
-    --cor-secundaria: #916156;
-    --cor-background: #fdf0e0;
-    --cor-destaque: #35485d;
-    --cor-branco: #fff;
+  /* Nova paleta de cores com fundo escuro */
+  --cor-primaria: #EFF6FF;    /* Azul muito claro (texto/principal) */
+  --cor-secundaria: #93C5FD;  /* Azul claro (destaques) */
+  --cor-background: #1E3A8A;  /* Azul escuro (fundo) */
+  --cor-destaque: #60A5FA;    /* Azul médio para destaques */
+  --cor-branco: #1E3A8A;      /* Cor base do fundo */
+  --cor-azul-claro: #3B82F6;  /* Azul médio */
+  --cor-azul-muito-claro: #1E40AF; /* Azul escuro para elementos */
 
-    /* Variações e tons */
-    --cor-primaria-light: rgba(215, 160, 132, 0.1);
-    --cor-primaria-medium: rgba(215, 160, 132, 0.2);
-    --cor-secundaria-light: rgba(145, 97, 86, 0.1);
-    --cor-destaque-light: rgba(53, 72, 93, 0.1);
+  /* Variações e tons */
+  --cor-primaria-light: rgba(239, 246, 255, 0.1);
+  --cor-primaria-medium: rgba(239, 246, 255, 0.2);
+  --cor-secundaria-light: rgba(147, 197, 253, 0.1);
+  --cor-destaque-light: rgba(96, 165, 250, 0.2);
 
-    /* Texto */
-    --cor-texto: #35485d;
-    --cor-texto-claro: rgba(53, 72, 93, 0.7);
-    --cor-texto-muito-claro: rgba(53, 72, 93, 0.5);
+  /* Texto */
+  --cor-texto: #EFF6FF;         /* Branco azulado para texto principal */
+  --cor-texto-claro: #BFDBFE;   /* Azul muito claro para texto secundário */
+  --cor-texto-muito-claro: #93C5FD; /* Azul claro para texto terciário */
 
-    /* Sombras */
-    --sombra-suave: 0 2px 20px rgba(53, 72, 93, 0.08);
-    --sombra-media: 0 8px 30px rgba(53, 72, 93, 0.12);
-    --sombra-forte: 0 20px 60px rgba(53, 72, 93, 0.15);
-    --sombra-colorida: 0 10px 40px rgba(215, 160, 132, 0.2);
+  /* Sombras */
+  --sombra-suave: 0 2px 20px rgba(0, 0, 0, 0.2);
+  --sombra-media: 0 8px 30px rgba(0, 0, 0, 0.25);
+  --sombra-forte: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --sombra-colorida: 0 10px 40px rgba(59, 130, 246, 0.25);
 
-    /* Bordas e transições */
-    --border-radius: 12px;
-    --border-radius-large: 20px;
+  /* Bordas e transições */
+  --border-radius: 8px;
+  --border-radius-large: 16px;
     --border-radius-xl: 32px;
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.2s ease-out;
 
-    /* Gradientes */
-    --gradient-primary: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
-    --gradient-soft: linear-gradient(135deg, var(--cor-background), var(--cor-branco));
-    --gradient-overlay: linear-gradient(135deg, rgba(215, 160, 132, 0.9), rgba(145, 97, 86, 0.9));
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--cor-azul-claro), var(--cor-destaque));
+  --gradient-soft: linear-gradient(135deg, var(--cor-background), var(--cor-azul-muito-claro));
+  --gradient-overlay: linear-gradient(135deg, rgba(30, 58, 138, 0.9), rgba(37, 99, 235, 0.9));
 }

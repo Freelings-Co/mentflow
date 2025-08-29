@@ -12,7 +12,6 @@ body {
     font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--cor-texto);
-    background: var(--cor-branco);
     overflow-x: hidden;
     font-size: 16px;
 }
@@ -42,7 +41,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--cor-background);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(215, 160, 132, 0.1);
     transform: translateY(-100%);
@@ -91,27 +90,11 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2.5rem;
-}
-
-.nav-link {
-    color: var(--cor-texto);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: var(--transition-fast);
-    position: relative;
-    padding: 0.5rem 0;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
     gap: clamp(1rem, 3vw, 2rem);
 }
 
 .nav-link {
-    color: var(--cor-secundaria);
+    color: var(--cor-primaria);
     text-decoration: none;
     font-weight: 500;
     font-size: clamp(0.9rem, 2vw, 1rem);
@@ -133,7 +116,7 @@ body {
 }
 
 .nav-link:hover {
-    color: var(--cor-primaria);
+    color: var(--cor-destaque);
 }
 
 .nav-link:hover::after {
@@ -147,8 +130,8 @@ body {
 }
 
 .cta-button {
-    background: var(--cor-primaria);
-    color: var(--cor-branco);
+    background: var(--cor-destaque);
+    color: var(--cor-primaria);
     padding: 0.8rem 1.8rem;
     border-radius: var(--border-radius);
     text-decoration: none;
@@ -162,7 +145,9 @@ body {
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 15px 50px rgba(215, 160, 132, 0.3);
+    box-shadow: 0 2px 18px var(--cor-primaria);
+    color: var(--cor-branco);
+    background: var(--cor-primaria);
 }
 
 /* Mobile Menu */
@@ -621,7 +606,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     padding: 2.5rem 2rem;
-    background: var(--cor-background);
+    background: var(--cor-primaria-light);  
     border-radius: var(--border-radius-large);
     box-shadow: var(--sombra-suave);
     display: flex;
@@ -646,9 +631,9 @@ body {
     padding: 0.8rem;
     border-radius: var(--border-radius);
     border: 1px solid var(--cor-primaria);
-    background: var(--cor-branco);
+    background: var(--cor-primaria);
     font-size: 1rem;
-    color: var(--cor-texto);
+    color: var(--cor-branco);
     resize: none;
     transition: border 0.2s;
 }
@@ -769,16 +754,6 @@ body {
     z-index: -1;
 }
 
-.mvv-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: 11em;
-    transition: max-height 0.4s;
-}
-
 .mvv-text-restante {
     display: none;
 }
@@ -790,15 +765,19 @@ body {
 /* Toggle Missão */
 #mvv-missao-toggle:checked ~ .mvv-text-wrapper .mvv-text {
     -webkit-line-clamp: unset;
+    line-clamp: unset;
     max-height: none;
     display: block;
 }
+
 #mvv-missao-toggle:checked ~ .mvv-text-wrapper .mvv-text-restante {
     display: inline;
 }
+
 #mvv-missao-toggle:checked ~ .mvv-text-wrapper .ler-mais {
     display: none;
 }
+
 #mvv-missao-toggle:checked ~ .mvv-text-wrapper .ler-menos {
     display: block;
 }
@@ -806,15 +785,19 @@ body {
 /* Toggle Visão */
 #mvv-visao-toggle:checked ~ .mvv-text-wrapper .mvv-text {
     -webkit-line-clamp: unset;
+    line-clamp: unset;
     max-height: none;
     display: block;
 }
+
 #mvv-visao-toggle:checked ~ .mvv-text-wrapper .mvv-text-restante {
     display: inline;
 }
+
 #mvv-visao-toggle:checked ~ .mvv-text-wrapper .ler-mais {
     display: none;
 }
+
 #mvv-visao-toggle:checked ~ .mvv-text-wrapper .ler-menos {
     display: block;
 }
@@ -822,15 +805,19 @@ body {
 /* Toggle Valores */
 #mvv-valores-toggle:checked ~ .mvv-text-wrapper .mvv-text {
     -webkit-line-clamp: unset;
+    line-clamp: unset;
     max-height: none;
     display: block;
 }
+
 #mvv-valores-toggle:checked ~ .mvv-text-wrapper .mvv-text-restante {
     display: inline;
 }
+
 #mvv-valores-toggle:checked ~ .mvv-text-wrapper .ler-mais {
     display: none;
 }
+
 #mvv-valores-toggle:checked ~ .mvv-text-wrapper .ler-menos {
     display: block;
 }
@@ -853,8 +840,10 @@ body {
 @media (max-width: 600px) {
     .mvv-text {
         -webkit-line-clamp: 5;
+        line-clamp: 5;
         max-height: 8em;
     }
+
     .mvv-text-wrapper {
         min-height: 5.5em;
     }
@@ -891,13 +880,13 @@ label {
     border-radius: var(--border-radius);
     text-align: center;
     transition: var(--transition);
-    border: 1px solid rgba(215, 160, 132, 0.1);
+    border: 1px groove rgba(134, 240, 231, 0.4);
 }
 
 .benefit-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--sombra-media);
-    border-color: var(--cor-primaria);
+    border-color:  groove var(--cor-primaria);
 }
 
 .benefit-icon {
@@ -946,6 +935,8 @@ label {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    border: 1px groove var(--cor-primaria-light);
+
 }
 
 .service-image {
@@ -1125,7 +1116,7 @@ label {
 }
 
 .testimonial-card {
-    background: var(--cor-branco);
+    background: var(--cor-primaria-light);
     padding: 2rem;
     border-radius: var(--border-radius-large);
     box-shadow: var(--sombra-suave);
@@ -1134,7 +1125,7 @@ label {
 }
 
 .testimonial-card::before {
-    content: '"';
+    content: '';
     position: absolute;
     top: -10px;
     left: 20px;
@@ -1164,11 +1155,11 @@ label {
 }
 
 .testimonial-avatar {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--cor-primaria);
+    border: 3px groove var(--cor-destaque);
 }
 
 .testimonial-name {
@@ -1178,7 +1169,7 @@ label {
 
 .testimonial-role {
     font-size: 0.9rem;
-    color: var(--cor-texto-claro);
+    color: var(--cor-primaria);
 }
 
 /* CTA Final */
@@ -1392,7 +1383,7 @@ label {
 
     }
 
-  
+
 
     .hero-content {
         grid-template-columns: 1fr;
@@ -1442,7 +1433,7 @@ label {
         width: 11em;
         object-fit: cover;
         height: 3em;
-      
+
     }
 
     .header-content {
@@ -1499,7 +1490,7 @@ label {
         width: 8em;
         object-fit: cover;
         height: 3em;
-      
+
     }
 
 
@@ -1545,7 +1536,7 @@ label {
 
     }
 
-        #audience-title {
+    #audience-title {
         padding-top: 1px;
         font-size: 1.5em;
         max-width: 100%;
