@@ -4,7 +4,6 @@ import {
   Heart,
   Users,
   Clock,
-  Star,
   CheckCircle,
   ChevronDown,
   MessageSquare,
@@ -12,8 +11,6 @@ import {
   Globe,
   Award,
   Smartphone,
-  ArrowRight,
-  Play,
   Menu,
   X,
 } from 'lucide-react'
@@ -215,12 +212,10 @@ const MentFlowLanding = () => {
         <div className='container'>
           <div className='header-content'>
             <img src={Logo} className='logo' alt="" />
-            {/* <a href='#' className='logo'>
-              MentFlow
-            </a> */}
+      
             <nav className='desktop-nav'>
               <ul className='nav-menu'>
-                <li><a href="/" className="nav-link">Início</a></li>
+                <li><a href="#" className="nav-link">Início</a></li>
 
                 <li className="nav-dropdown">
                   <button

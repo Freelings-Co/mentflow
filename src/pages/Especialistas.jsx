@@ -8,6 +8,7 @@ import {
     Heart,
     DollarSign,
     UserPlus,
+    ChevronDown,
     CheckCircle,
     Headset,
     MapPin,
@@ -25,6 +26,7 @@ import Reveal from '../components/Reveal'
 
 const Especialistas = () => {
     const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
@@ -50,10 +52,42 @@ const Especialistas = () => {
 
                         <nav className="desktop-nav">
                             <ul className="nav-menu">
-                                <li><a href="/" className="nav-link">Início</a></li>
+                                {/* <li><a href="/" className="nav-link">Início</a></li>
                                 <li><a href="#beneficios" className="nav-link">Benefícios</a></li>
                                 <li><a href="#como-funciona" className="nav-link">Como Funciona</a></li>
-                                <li><a href="#depoimento" className="nav-link">Depoimento</a></li>
+                                <li><a href="#depoimento" className="nav-link">Depoimento</a></li> */}
+                                <li><a href="#" className="nav-link">Início</a></li>
+
+                                <li className="nav-dropdown">
+                                    <button
+                                        className="nav-link dropdown-trigger"
+                                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                    >
+                                        Conhecer
+                                        <ChevronDown
+                                            size={16}
+                                            className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
+                                        />
+                                    </button>
+
+                                    <div className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
+                                        <a href="#beneficios" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                                            Benefícios
+                                        </a>
+                                        <a href="#como-funciona" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                                            Como Funciona
+                                        </a>
+                                        <a href="#depoimento" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                                            Depoimentos
+                                        </a>
+                                        <a href="#cadastro" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                                            Cadastrar
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li><a href="/" className="nav-link">Para Clientes</a></li>
+                                <li><a href="/para-empresas" className="nav-link">Para Empresas</a></li>
                             </ul>
                         </nav>
 
