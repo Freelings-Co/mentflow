@@ -87,7 +87,7 @@ const Especialistas = () => {
                                 </li>
 
                                 <li><a href="/" className="nav-link">Para Clientes</a></li>
-                                <li><a href="/para-empresas" className="nav-link">Para Empresas</a></li>
+                                <li><a href="/empresas" className="nav-link">Para Empresas</a></li>
                             </ul>
                         </nav>
 

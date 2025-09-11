@@ -246,7 +246,7 @@ const MentFlowLanding = () => {
                 </li>
 
                 <li><a href="/especialistas" className="nav-link">Para Especialistas</a></li>
-                <li><a href="/para-empresas" className="nav-link">Para Empresas</a></li>
+                <li><a href="/empresas" className="nav-link">Para Empresas</a></li>
               </ul>
             </nav>
             <div className='header-actions'>
@@ -286,7 +286,7 @@ const MentFlowLanding = () => {
               </li>
 
               <li><a href="/especialistas" className="mobile-nav-link">Para Especialistas</a></li>
-              <li><a href="/para-empresas" className="mobile-nav-link">Para Empresas</a></li>
+              <li><a href="/empresas" className="mobile-nav-link">Para Empresas</a></li>
             </ul>
             <a
               href='#agendar'

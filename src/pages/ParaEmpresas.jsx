@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Shield, UserCheck, CircleCheckBig, Menu, X, ArrowRight, Building2, TrendingUp, Clock, BarChart3, Lock, Star } from 'lucide-react';
-import './ParaEmpresas.css';
+import '../pages/ParaEmpresas.css';
 import logo from '../assets/full-logo.webp';
 
 const ParaEmpresas = () => {
@@ -50,7 +50,7 @@ const ParaEmpresas = () => {
               <ul className="mobile-nav-menu">
                 <li><a href="/" className="mobile-nav-link">Início</a></li>
                 <li><a href="/especialistas" className="mobile-nav-link">Especialistas</a></li>
-                <li><a href="/para-empresas" className="mobile-nav-link">Para Empresas</a></li>
+                <li><a href="/empresas" className="mobile-nav-link">Para Empresas</a></li>
                 <li><a href="/sobre" className="mobile-nav-link">Sobre</a></li>
               </ul>
               <a href="/cadastro" className="mobile-cta-button">Começar Agora</a>

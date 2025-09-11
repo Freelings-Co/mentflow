@@ -9,7 +9,7 @@ import Landing from './pages/Landing'
 import MainLayout from './layouts/MainLayout'
 import ScrollToTop from './components/ScrollToTop'
 import Especialistas from './pages/Especialistas.jsx'
-import ParaEmpresas from './pages/ParaEmpresas'
+import ParaEmpresas from './pages/ParaEmpresas.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/' element={<Landing />} />
           <Route path='/especialistas' element={<Especialistas />} />
           <Route path='/empresas' element={<ParaEmpresas />} />
-          ,
+          
         </Routes>
       </MainLayout>
     </BrowserRouter>
