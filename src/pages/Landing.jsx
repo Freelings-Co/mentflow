@@ -6,6 +6,7 @@ import {
   Clock,
   Star,
   CheckCircle,
+  ChevronDown,
   MessageSquare,
   Video,
   Globe,
@@ -23,6 +24,7 @@ import MarianaLima from '../assets/mariana-lima.webp'
 
 import Reveal from '../components/Reveal'
 import '../pages/Landing.css'
+import '../styles/dropdown-menu.css'
 import Logo from '../assets/full-logo.webp'
 import Design1 from '../assets/design1.webp'
 import Banner from '../assets/banner1.webp'
@@ -65,6 +67,7 @@ const MentFlowLanding = () => {
   }
 
   const [headerVisible, setHeaderVisible] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -217,34 +220,38 @@ const MentFlowLanding = () => {
             </a> */}
             <nav className='desktop-nav'>
               <ul className='nav-menu'>
-                <li>
-                  <a href='#como-funciona' className='nav-link'>
-                    Como Funciona
-                  </a>
-                </li>
-                <li>
-                  <a href='#servicos' className='nav-link'>
-                    Serviços
-                  </a>
-                </li>
-                <li>
-                  <a href='#depoimentos' className='nav-link'>
-                    Depoimentos
-                  </a>
-                </li>
-                <li>
-                  <li>
-                    <a href="/especialistas" className="nav-link">Para Especialistas
+                <li><a href="/" className="nav-link">Início</a></li>
+
+                <li className="nav-dropdown">
+                  <button
+                    className="nav-link dropdown-trigger"
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  >
+                    Conhecer
+                    <ChevronDown
+                      size={16}
+                      className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
+                    />
+                  </button>
+
+                  <div className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
+                     <a href="#como-funciona" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Como Funciona
                     </a>
-                  </li>
-                  <li>
-                    <a href="/empresas" className="nav-link">Para Empresas
+                    <a href="#servicos" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Serviços
                     </a>
-                  </li>
-                  <a href='#contato' className='nav-link'>
-                    Contato
-                  </a>
+                    <a href="#depoimentos" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Depoimentos
+                    </a>
+                    <a href="#contato" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Contato
+                    </a>
+                  </div>
                 </li>
+
+                <li><a href="/especialistas" className="nav-link">Para Especialistas</a></li>
+                <li><a href="/para-empresas" className="nav-link">Para Empresas</a></li>
               </ul>
             </nav>
             <div className='header-actions'>
@@ -262,48 +269,29 @@ const MentFlowLanding = () => {
         <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
           <nav className='mobile-nav'>
             <ul className='mobile-nav-menu'>
-              <li>
-                <a
-                  href='#como-funciona'
-                  className='mobile-nav-link'
-                  onClick={closeMobileMenu}
+              <li><a href="/" className="mobile-nav-link">Início</a></li>
+
+              <li className="mobile-dropdown">
+                <button
+                  className="mobile-nav-link dropdown-trigger-mobile"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 >
-                  Como Funciona
-                </a>
+                  Conhecer
+                  <ChevronDown
+                    size={16}
+                    className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
+                  />
+                </button>
+                <div className={`mobile-dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
+                  <a href="#como-funciona" className="mobile-dropdown-link">Como Funciona</a>
+                  <a href="#servicos" className="mobile-dropdown-link">Serviços</a>
+                  <a href="#depoimentos" className="mobile-dropdown-link">Depoimentos</a>
+                  <a href="#contato" className="mobile-dropdown-link">Contato</a>
+                </div>
               </li>
-              <li>
-                <a
-                  href='#servicos'
-                  className='mobile-nav-link'
-                  onClick={closeMobileMenu}
-                >
-                  Serviços
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#depoimentos'
-                  className='mobile-nav-link'
-                  onClick={closeMobileMenu}
-                >
-                  Depoimentos
-                </a>
-              </li>
-              <li>
-                <a href="/especialistas" className="mobile-nav-link">Para Especialistas</a>
-              </li>
-               <li>
-                <a href="/empresas" className="mobile-nav-link">Para Empresas</a>
-              </li>
-              <li>
-                <a
-                  href='#contato'
-                  className='mobile-nav-link'
-                  onClick={closeMobileMenu}
-                >
-                  Contato
-                </a>
-              </li>
+
+              <li><a href="/especialistas" className="mobile-nav-link">Para Especialistas</a></li>
+              <li><a href="/para-empresas" className="mobile-nav-link">Para Empresas</a></li>
             </ul>
             <a
               href='#agendar'

@@ -84,7 +84,7 @@ const Especialistas = () => {
             <main>
 
                 {/* Hero Section */}
-                <section className='hero'>
+                <section className='hero-especialistas'>
                     <img src={Banner} alt='' />
 
                 </section>

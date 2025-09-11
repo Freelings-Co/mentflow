@@ -1,6 +1,4 @@
-@import './colors.css';
-
-/* Dropdown Desktop */
+/* Dropdown Menu - Adicionar no final do Landing.css */
 .nav-dropdown {
   position: relative;
   display: inline-block;
@@ -35,17 +33,12 @@
   transform: translateX(-50%);
 }
 
-.dropdown-trigger:hover {
-  color: var(--cor-destaque);
-}
-
 .dropdown-trigger:hover::after {
   width: 100%;
 }
 
 .dropdown-arrow {
   transition: transform 0.3s ease;
-  color: currentColor;
   flex-shrink: 0;
 }
 
@@ -57,18 +50,16 @@
   position: absolute;
   top: calc(100% + 10px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-10px);
   background: var(--cor-branco);
-  border-radius: var(--border-radius);
+  border-radius: 0 0 15px 15px;
   box-shadow: 0 10px 40px rgba(215, 160, 132, 0.2);
   border: 1px solid rgba(215, 160, 132, 0.1);
-  min-width: 200px;
+  min-width: 180px;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-50%) translateY(-10px);
   transition: all 0.3s ease;
   z-index: 9999;
-  backdrop-filter: blur(20px);
   padding: 0.5rem 0;
 }
 
@@ -78,20 +69,6 @@
   transform: translateX(-50%) translateY(0);
 }
 
-.dropdown-menu::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid var(--cor-branco);
-  filter: drop-shadow(0 -2px 2px rgba(0,0,0,0.1));
-}
-
 .dropdown-link {
   display: block;
   padding: 0.8rem 1.5rem;
@@ -99,71 +76,25 @@
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.dropdown-link::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(215, 160, 132, 0.1), transparent);
-  transition: left 0.3s ease;
 }
 
 .dropdown-link:hover {
   background: var(--cor-primaria-light);
   color: var(--cor-primaria);
-  transform: translateX(5px);
-}
-
-.dropdown-link:hover::before {
-  left: 100%;
 }
 
 /* Mobile Dropdown */
-.mobile-dropdown {
-  position: relative;
-}
-
-.dropdown-trigger-mobile {
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  color: var(--cor-texto);
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  transition: var(--transition-fast);
-}
-
-.dropdown-trigger-mobile:hover {
-  background: var(--cor-primaria-light);
-  color: var(--cor-primaria);
-  transform: translateX(10px);
-}
-
 .mobile-dropdown-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  transition: max-height 0.3s ease;
   background: rgba(215, 160, 132, 0.05);
   border-radius: var(--border-radius);
   margin-top: 0.5rem;
 }
 
 .mobile-dropdown-content.open {
-  max-height: 200px;
+  max-height: 250px;
   padding: 0.5rem 0;
 }
 
@@ -173,58 +104,18 @@
   color: var(--cor-texto-claro);
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
   transition: all 0.2s ease;
-  border-radius: var(--border-radius);
   margin: 0.25rem 0.5rem;
-  position: relative;
+  border-radius: var(--border-radius);
 }
 
 .mobile-dropdown-link:hover {
   background: var(--cor-primaria-light);
   color: var(--cor-primaria);
-  transform: translateX(10px);
 }
 
-/* Hover states para desktop */
-.nav-dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* Responsividade */
 @media (max-width: 1024px) {
-  .nav-dropdown:hover .dropdown-menu {
-    display: none;
-  }
-  
   .dropdown-menu {
     display: none;
-  }
-}
-
-/* Estados de foco para acessibilidade */
-.dropdown-trigger:focus,
-.dropdown-trigger-mobile:focus {
-  outline: 2px solid var(--cor-primaria);
-  outline-offset: 2px;
-  border-radius: var(--border-radius);
-}
-
-.dropdown-link:focus,
-.mobile-dropdown-link:focus {
-  outline: 2px solid var(--cor-primaria);
-  outline-offset: 2px;
-}
-
-/* Redução de movimento para acessibilidade */
-@media (prefers-reduced-motion: reduce) {
-  .dropdown-menu,
-  .mobile-dropdown-content,
-  .dropdown-arrow,
-  .dropdown-link,
-  .mobile-dropdown-link {
-    transition-duration: 0.01ms !important;
   }
 }

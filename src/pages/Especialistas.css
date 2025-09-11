@@ -229,7 +229,7 @@ body {
 }
 
 /* Hero Section */
-.hero {
+.hero-especialistas {
 
     display: flex;
     align-items: center;
@@ -241,7 +241,7 @@ body {
 
 }
 
-.hero img {
+.hero-especialistas img {
     object-fit: cover;
     height: auto;
     margin: 0;
@@ -607,7 +607,7 @@ body {
         height: 300px;
     }
 
-       .hero img {
+       .hero-especialistas img {
 
         content: url(../assets/banner-especialistas-mobile.webp);
 
