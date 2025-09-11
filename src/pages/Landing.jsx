@@ -199,7 +199,7 @@ const MentFlowLanding = () => {
       author: 'Mariana Pedrozo',
       role: 'Gestora de RH',
       content:
-       `" Finalmente encontrei uma forma prática e consistente de cuidar da minha saúde mental. A flexibilidade de horários fez toda a diferença para equilibrar minhas responsabilidades do dia a dia. Me sinto muito mais feliz e em equilíbrio desde que comecei. "`,
+        `" Finalmente encontrei uma forma prática e consistente de cuidar da minha saúde mental. A flexibilidade de horários fez toda a diferença para equilibrar minhas responsabilidades do dia a dia. Me sinto muito mais feliz e em equilíbrio desde que comecei. "`,
       stars: 5,
       avatar: MarianaLima,
     },
@@ -233,6 +233,10 @@ const MentFlowLanding = () => {
                   </a>
                 </li>
                 <li>
+                  <li>
+                    <a href="/especialistas" className="nav-link">Para Especialistas
+                    </a>
+                  </li>
                   <a href='#contato' className='nav-link'>
                     Contato
                   </a>
@@ -280,6 +284,9 @@ const MentFlowLanding = () => {
                 >
                   Depoimentos
                 </a>
+              </li>
+              <li>
+                <a href="/especialistas" className="mobile-nav-link">Para Especialistas</a>
               </li>
               <li>
                 <a
@@ -386,9 +393,9 @@ const MentFlowLanding = () => {
                 <div className="mvv-text-wrapper">
                   <p className="mvv-text mvv-text-truncada">
                     Promover o equilíbrio emocional e o bem-estar, impulsionando o crescimento pessoal e profissional.
-       
+
                   </p>
-  
+
                 </div>
               </div>
               <div className='mvv-card'>
