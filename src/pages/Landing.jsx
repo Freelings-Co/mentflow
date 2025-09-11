@@ -237,6 +237,10 @@ const MentFlowLanding = () => {
                     <a href="/especialistas" className="nav-link">Para Especialistas
                     </a>
                   </li>
+                  <li>
+                    <a href="/empresas" className="nav-link">Para Empresas
+                    </a>
+                  </li>
                   <a href='#contato' className='nav-link'>
                     Contato
                   </a>
@@ -287,6 +291,9 @@ const MentFlowLanding = () => {
               </li>
               <li>
                 <a href="/especialistas" className="mobile-nav-link">Para Especialistas</a>
+              </li>
+               <li>
+                <a href="/empresas" className="mobile-nav-link">Para Empresas</a>
               </li>
               <li>
                 <a

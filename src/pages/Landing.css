@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+@import '../styles/dropdown-menu.css';
+
 html {
     scroll-behavior: smooth;
 }
