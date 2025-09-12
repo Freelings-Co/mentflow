@@ -13,11 +13,22 @@ import {
   Smartphone,
   Menu,
   X,
+  Star,
+  Stethoscope,
+  DollarSign,
+  Calendar,
+  ArrowLeft,
+  User,
+  GraduationCap
 } from 'lucide-react'
+
 
 import JanaRibas from '../assets/lgbtw.webp'
 import CarlosSouza from '../assets/carlos-souza.webp'
 import MarianaLima from '../assets/mariana-lima.webp'
+import LiviaMoreira from '../assets/livia-moreira.webp'
+import CarlosSantos from '../assets/carlos-santos.webp'
+import MariaCosta from '../assets/maria-costa.webp'
 
 import Reveal from '../components/Reveal'
 import '../pages/Landing.css'
@@ -212,7 +223,7 @@ const MentFlowLanding = () => {
         <div className='container'>
           <div className='header-content'>
             <img src={Logo} className='logo' alt="" />
-      
+
             <nav className='desktop-nav'>
               <ul className='nav-menu'>
                 <li><a href="#" className="nav-link">Início</a></li>
@@ -230,7 +241,7 @@ const MentFlowLanding = () => {
                   </button>
 
                   <div className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
-                     <a href="#como-funciona" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                    <a href="#como-funciona" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
                       Como Funciona
                     </a>
                     <a href="#servicos" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
@@ -365,6 +376,241 @@ const MentFlowLanding = () => {
           </div>
         </section>
       </Reveal>
+
+      {/* Seção de Profissionais */}
+      <section className="section profissionais" id="profissionais">
+        <div className="container">
+          <div className="section-header">
+            <div className="section-badge">
+              <h2>
+                <span className="section-icon">
+                  <Users className="icon" />
+                </span>
+                Nossos Especialistas
+              </h2>
+            </div>
+            <p className="section-subtitle">
+              Conecte-se com profissionais qualificados e transforme sua jornada de bem-estar mental
+            </p>
+          </div>
+
+          <div className="profissionais-grid">
+            {[
+              {
+                id: 1,
+                nome: "Dra. Lívia Moreira",
+                especialidade: "Psicóloga Clínica",
+                imagem: LiviaMoreira,
+                rating: 5.0,
+                reviews: 127,
+                valor: "R$ 120",
+                status: "Seg à Sexta",
+                badge: "Mais Procurada",
+                linkAgendamento: "https://agendarconsulta.com/new/perfil/sr-livia-moreira-1757694224#location",
+                descricao: "Especialista em terapia cognitivo-comportamental com mais de 7 anos de experiência. Atua principalmente com ansiedade, depressão e transtornos do humor, oferecendo um ambiente acolhedor e técnicas comprovadas para o desenvolvimento pessoal.",
+                formacao: "CRP 1110799 • Pós graduação em Psicologia Aplicada - Universidade do Minho",
+                especialidades: ["Ansiedade", "Depressão", "TCC", "Terapia de Casal"],
+                metodologia: "Abordagem humanizada focada no autoconhecimento e desenvolvimento de estratégias práticas para o dia a dia.",
+                experiencia: "7+ anos",
+                sessoes: "500+ sessões"
+              },
+              {
+                id: 2,
+                nome: "Dr. Carlos Santos",
+                especialidade: "Psiquiatra",
+                imagem: CarlosSantos,
+                rating: 4.8,
+                reviews: 89,
+                valor: "R$ 200",
+                status: "Diariamente",
+                badge: "Novo",
+                descricao: "Médico psiquiatra com especialização em transtornos de ansiedade e medicina do sono. Combina tratamento medicamentoso com terapia, oferecendo uma abordagem integrada e personalizada para cada paciente.",
+                formacao: "CRM 12345 • Residência em Psiquiatria UNIFESP",
+                especialidades: ["Ansiedade", "Insônia", "Bipolaridade", "TDAH"],
+                metodologia: "Tratamento integrado combinando medicação quando necessário com técnicas terapêuticas modernas.",
+                experiencia: "8+ anos",
+                sessoes: "300+ consultas"
+              },
+              {
+                id: 3,
+                nome: "Dra. Maria Costa",
+                especialidade: "Terapeuta Familiar",
+                imagem: MariaCosta,
+                rating: 4.9,
+                reviews: 156,
+                valor: "R$ 150",
+                status: "Seg à Sexta",
+                badge: "",
+                descricao: "Especialista em terapia familiar e de casal, com foco em comunicação e resolução de conflitos. Atendimento presencial e online, trabalhando com dinâmicas familiares e fortalecimento de vínculos.",
+                formacao: "CRP 06/67890 • Especialização em Terapia Sistêmica",
+                especialidades: ["Terapia Familiar", "Terapia de Casal", "Adolescentes", "Comunicação"],
+                metodologia: "Abordagem sistêmica que trabalha as relações familiares de forma integrada e colaborativa.",
+                experiencia: "12+ anos",
+                sessoes: "800+ sessões"
+              }
+            ].map((profissional, index) => (
+              <div key={profissional.id} className={`profissional-card reveal`} style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="card-container">
+                  <div className="card-flipper" id={`card-${profissional.id}`}>
+                    {/* Lado Frontal */}
+                    <div className="card-front">
+                      {profissional.badge && (
+                        <div className="profissional-badge">
+                          <Award className="badge-icon" />
+                          {profissional.badge}
+                        </div>
+                      )}
+
+                      <div className="profissional-image-container">
+                        <img
+                          src={profissional.imagem}
+                          alt={profissional.nome}
+                          className="profissional-image"
+                        />
+                        <div className="status-indicator">
+                          <div className="status-dot"></div>
+                        </div>
+                        <div className="image-overlay">
+                          <div className="rating-overlay">
+                            <Star className="star-icon filled" />
+                            <span>{profissional.rating}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="profissional-content">
+                        <div className="profissional-header">
+                          <h3 className="profissional-nome">{profissional.nome}</h3>
+                          <p className="profissional-especialidade">
+                            <Stethoscope className="especialidade-icon" />
+                            {profissional.especialidade}
+                          </p>
+                        </div>
+
+                        <div className="profissional-stats">
+                          <div className="stat-item">
+                            <DollarSign className="stat-icon" />
+                            <span>{profissional.valor}/sessão</span>
+                          </div>
+                          <div className="stat-item status-available">
+                            <Clock className="stat-icon" />
+                            <span>{profissional.status}</span>
+                          </div>
+                        </div>
+
+                        <div className="profissional-rating-full">
+                          <div className="stars">
+                            {[...Array(5)].map((_, i) => (
+                              <Star key={i} className={`star ${i < Math.floor(profissional.rating) ? 'filled' : ''}`} />
+                            ))}
+                          </div>
+                          <span className="rating-text">({profissional.reviews} avaliações)</span>
+                        </div>
+                      </div>
+
+                      <div className="profissional-actions">
+                        <button className="btn-primary btn-agendar" onClick={() => window.open(profissional.linkAgendamento, '_blank')}>
+                          <Calendar className="btn-icon" />
+                          Marcar Consulta
+                        </button>
+                        <button
+                          className="btn-secondary btn-ver-mais"
+                          onClick={() => {
+                            const flipper = document.getElementById(`card-${profissional.id}`);
+                            flipper.classList.add('flipped');
+                          }}
+                        >
+                          <Eye className="btn-icon" />
+                          Ver Mais
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Lado Traseiro */}
+                    <div className="card-back">
+                      <div className="card-back-content">
+                        <button
+                          className="btn-voltar"
+                          onClick={() => {
+                            const flipper = document.getElementById(`card-${profissional.id}`);
+                            flipper.classList.remove('flipped');
+                          }}
+                        >
+                          <ArrowLeft className="btn-icon" />
+                          Voltar
+                        </button>
+
+                        <div className="profissional-detalhes">
+                          <div className="detalhe-header">
+                            <img
+                              src={profissional.imagem}
+                              alt={profissional.nome}
+                              className="avatar-small"
+                            />
+                            <div>
+                              <h3>{profissional.nome}</h3>
+                              <p>{profissional.especialidade}</p>
+                            </div>
+                          </div>
+
+                          <div className="detalhe-section">
+                            <h4>
+                              <User className="section-icon" />
+                              Sobre o Profissional
+                            </h4>
+                            <p>{profissional.descricao}</p>
+                          </div>
+
+                          <div className="detalhe-section">
+                            <h4>
+                              <GraduationCap className="section-icon" />
+                              Formação
+                            </h4>
+                            <p>{profissional.formacao}</p>
+                          </div>
+
+                          <div className="detalhe-stats">
+                            <div className="stat-card">
+                              <Calendar className="stat-card-icon" />
+                              <span>{profissional.experiencia}</span>
+                              <small>Experiência</small>
+                            </div>
+                            <div className="stat-card">
+                              <Users className="stat-card-icon" />
+                              <span>{profissional.sessoes}</span>
+                              <small>Realizadas</small>
+                            </div>
+                          </div>
+
+                          <div className="detalhe-section">
+                            <h4>
+                              <Target className="section-icon" />
+                              Especialidades
+                            </h4>
+                            <div className="especialidades-tags">
+                              {profissional.especialidades.map((esp, i) => (
+                                <span key={i} className="especialidade-tag">
+                                  <CheckCircle className="tag-icon" />
+                                  {esp}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          <button className="btn-primary btn-agendar-back" onClick={() => window.open(profissional.linkAgendamento, '_blank')}>
+                            <Calendar className="btn-icon" />
+                            Agendar Consulta
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Missão, Visão e Valores */}
       <Reveal>
