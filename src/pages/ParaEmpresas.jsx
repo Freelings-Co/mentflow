@@ -3,10 +3,71 @@ import { Users, Shield, UserCheck, CircleCheckBig, Menu, X, ArrowRight, Building
 import '../pages/ParaEmpresas.css';
 import logo from '../assets/full-logo.webp';
 import Banner from '../assets/banner-empresas.webp'
+import { WhatsappLogoIcon } from '@phosphor-icons/react';
 
 const ParaEmpresas = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+  
+  // Form state
+  const [formData, setFormData] = useState({
+    empresaNome: '',
+    empresaCnpj: '',
+    empresaSegmento: '',
+    numColaboradores: '',
+    empresaCidade: '',
+    empresaEstado: '',
+    contatoNome: '',
+    contatoCargo: '',
+    contatoEmail: '',
+    contatoTelefone: ''
+  });
+  
+  const [formStatus, setFormStatus] = useState('');
+  
+  // Generate WhatsApp link with form data
+  const whatsappLink = `https://wa.me/SEUNUMERO?text=${encodeURIComponent(
+    `*Nova Solicitação de Proposta*\n\n` +
+    `*Dados da Empresa*\n` +
+    `Nome: ${formData.empresaNome || 'Não informado'}\n` +
+    `CNPJ: ${formData.empresaCnpj || 'Não informado'}\n` +
+    `Segmento: ${formData.empresaSegmento || 'Não informado'}\n` +
+    `Número de Colaboradores: ${formData.numColaboradores || 'Não informado'}\n` +
+    `Cidade/Estado: ${formData.empresaCidade || 'Não informado'}/${formData.empresaEstado || 'Não informado'}\n\n` +
+    `*Dados do Responsável*\n` +
+    `Nome: ${formData.contatoNome || 'Não informado'}\n` +
+    `Cargo: ${formData.contatoCargo || 'Não informado'}\n` +
+    `E-mail: ${formData.contatoEmail || 'Não informado'}\n` +
+    `Telefone: ${formData.contatoTelefone || 'Não informado'}`
+  )}`;
+  
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically send the data to your backend
+    console.log('Form submitted:', formData);
+    setFormStatus('Solicitação enviada com sucesso! Entraremos em contato em breve.');
+    // Reset form after submission
+    setFormData({
+      empresaNome: '',
+      empresaCnpj: '',
+      empresaSegmento: '',
+      numColaboradores: '',
+      empresaCidade: '',
+      empresaEstado: '',
+      contatoNome: '',
+      contatoCargo: '',
+      contatoEmail: '',
+      contatoTelefone: ''
+    });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -258,6 +319,191 @@ const ParaEmpresas = () => {
           </div>
         </div>
       </section>
+
+      {/* Formulário de Contato para Empresas */}
+      <section className='section contato-empresas' id='contato-empresas'>
+        <div className='container'>
+          <div className='section-header'>
+            <div className='section-badge'><h1>Contato</h1></div>
+            <h2 className='section-title'>Solicite uma Proposta</h2>
+            <p className='section-subtitle'>Preencha o formulário abaixo e nossa equipe entrará em contato para apresentar uma solução personalizada para sua empresa.</p>
+          </div>
+          
+          <form className='contato-empresas-form' onSubmit={(e) => e.preventDefault()}>
+            <fieldset className='form-fieldset'>
+              <legend className='fieldset-legend'>
+                <Building2 size={24} />
+                <span>Dados da Empresa</span>
+              </legend>
+              
+              <div className='form-group'>
+                <label htmlFor='empresa-nome'>Nome da Empresa <span className='required'>*</span></label>
+                <input 
+                  type='text' 
+                  id='empresa-nome' 
+                  name='empresaNome' 
+                  required 
+                  placeholder='Digite o nome da sua empresa'
+                />
+              </div>
+              
+              <div className='form-group'>
+                <label htmlFor='empresa-cnpj'>CNPJ <span className='required'>*</span></label>
+                <input 
+                  type='text' 
+                  id='empresa-cnpj' 
+                  name='empresaCnpj' 
+                  required 
+                  placeholder='00.000.000/0000-00'
+                />
+              </div>
+              
+              <div className='form-group'>
+                <label htmlFor='empresa-segmento'>Segmento de Atuação <span className='required'>*</span></label>
+                <input 
+                  type='text' 
+                  id='empresa-segmento' 
+                  name='empresaSegmento' 
+                  required 
+                  placeholder='Ex: Tecnologia, Varejo, Saúde, etc.'
+                />
+              </div>
+              
+              <div className='form-group'>
+                <label>Número de Colaboradores <span className='required'>*</span></label>
+                <div className='radio-group'>
+                  {['1-10', '11-50', '51-200', '200+'].map((range) => (
+                    <label key={range} className='radio-label'>
+                      <input 
+                        type='radio' 
+                        name='numColaboradores' 
+                        value={range}
+                        required
+                      />
+                      <span>{range}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+              
+              <div className='form-row'>
+                <div className='form-group'>
+                  <label htmlFor='empresa-cidade'>Cidade <span className='required'>*</span></label>
+                  <input 
+                    type='text' 
+                    id='empresa-cidade' 
+                    name='empresaCidade' 
+                    required 
+                    placeholder='Sua cidade'
+                  />
+                </div>
+                
+                <div className='form-group'>
+                  <label htmlFor='empresa-estado'>Estado <span className='required'>*</span></label>
+                  <select 
+                    id='empresa-estado' 
+                    name='empresaEstado' 
+                    required
+                    defaultValue=''
+                  >
+                    <option value='' disabled>Selecione o estado</option>
+                    {[
+                      'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 
+                      'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 
+                      'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
+                    ].map((uf) => (
+                      <option key={uf} value={uf}>{uf}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+            
+            <fieldset className='form-fieldset'>
+              <legend className='fieldset-legend'>
+                <UserCheck size={24} />
+                <span>Responsável pelo Contato</span>
+              </legend>
+              
+              <div className='form-row'>
+                <div className='form-group'>
+                  <label htmlFor='contato-nome'>Nome Completo <span className='required'>*</span></label>
+                  <input 
+                    type='text' 
+                    id='contato-nome' 
+                    name='contatoNome' 
+                    required 
+                    placeholder='Seu nome completo'
+                  />
+                </div>
+                
+                <div className='form-group'>
+                  <label htmlFor='contato-cargo'>Cargo/Função <span className='required'>*</span></label>
+                  <input 
+                    type='text' 
+                    id='contato-cargo' 
+                    name='contatoCargo' 
+                    required 
+                    placeholder='Ex: RH, CEO, Gestor de Pessoas'
+                  />
+                </div>
+              </div>
+              
+              <div className='form-row'>
+                <div className='form-group'>
+                  <label htmlFor='contato-email'>E-mail Corporativo <span className='required'>*</span></label>
+                  <input 
+                    type='email' 
+                    id='contato-email' 
+                    name='contatoEmail' 
+                    required 
+                    placeholder='seu.email@empresa.com'
+                  />
+                </div>
+                
+                <div className='form-group'>
+                  <label htmlFor='contato-telefone'>Telefone/WhatsApp <span className='required'>*</span></label>
+                  <input 
+                    type='tel' 
+                    id='contato-telefone' 
+                    name='contatoTelefone' 
+                    required 
+                    placeholder='(00) 00000-0000'
+                  />
+                </div>
+              </div>
+            </fieldset>
+            
+            <div className='form-actions'>
+              <button type='submit' className='cta-button'>
+                Enviar Solicitação
+                <ArrowRight size={20} style={{ marginLeft: '8px' }} />
+              </button>
+              <a 
+                href={whatsappLink} 
+                target='_blank' 
+                rel='noopener noreferrer' 
+                className='cta-button whatsapp-btn'
+                style={{ 
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  backgroundColor: '#25D366',
+                  color: 'white',
+                  textDecoration: 'none',
+                  marginLeft: '1rem'
+                }}
+              >
+                <WhatsappLogoIcon size={26} />
+                Enviar pelo WhatsApp
+              </a>
+            </div>
+          </form>
+        </div>
+      </section>
+
+     
     </div>
   );
 };
