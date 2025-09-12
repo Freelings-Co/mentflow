@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Users, Shield, UserCheck, CircleCheckBig, Menu, X, ArrowRight, Building2, TrendingUp, Clock, BarChart3, Lock, Star } from 'lucide-react';
 import '../pages/ParaEmpresas.css';
 import logo from '../assets/full-logo.webp';
+import Banner from '../assets/banner-empresas.webp'
 
 const ParaEmpresas = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,6 +59,11 @@ const ParaEmpresas = () => {
           </div>
         </div>
       </header>
+
+
+      <section className='hero-empresas'>
+        <img src={Banner} alt="" />
+      </section>
 
       {/* Por que levar a MentFlow */}
       <section className="section beneficios-empresas">
