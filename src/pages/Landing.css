@@ -270,7 +270,7 @@ body {
 }
 
 .mobile-dropdown-content.open {
-    max-height: 400px;
+    max-height: 100% !important;
     opacity: 1;
 }
 
@@ -1622,12 +1622,12 @@ label {
 
     .section-badge h1 {
         font-size: 1.7rem;
-         margin-top: 2.2em;
+        margin-top: 2.2em;
     }
 
     .section-title {
         font-size: 5.5vw;
-       
+
     }
 
     .section-subtitle {
@@ -2195,6 +2195,13 @@ label {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+
+    .mvv-card {
+   
+        padding: 2.5rem 2rem 4.5em;
+    
+    }
+
 
     /* .profissional-card {
         height: 590px;

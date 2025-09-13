@@ -90,23 +90,20 @@ const MentFlowLanding = () => {
 
   // Adicione este useEffect após os outros useEffects existentes:
 
-// Adicione este useEffect após os outros useEffects existentes
-useEffect(() => {
-  const handleScroll = () => {
-    if (mobileMenuOpen) {
-      setMobileMenuOpen(false);
-      setIsDropdownOpen(false);
-    }
-  };
+  // Adicione este useEffect após os outros useEffects existentes
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
+        setIsDropdownOpen(false);
+      }
+    };
 
-  if (mobileMenuOpen) {
-    window.addEventListener('scroll', handleScroll);
-  }
 
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
-  };
-}, [mobileMenuOpen]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [mobileMenuOpen]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
@@ -307,11 +304,6 @@ useEffect(() => {
         <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
           <nav className='mobile-nav'>
             <ul className='mobile-nav-menu'>
-              <li>
-                <a href="#" className="mobile-nav-link" onClick={closeMobileMenu}>
-                  Início
-                </a>
-              </li>
 
               <li className="mobile-dropdown">
                 <button
@@ -353,7 +345,29 @@ useEffect(() => {
                       setIsDropdownOpen(false);
                     }}
                   >
-                    Especialistas
+                    Nossos Especialistas
+                  </a>
+
+                  <a
+                    href="#section-mvv"
+                    className="mobile-dropdown-link"
+                    onClick={(e) => {
+                      closeMobileMenu();
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Nossa Essência
+                  </a>
+
+                  <a
+                    href="#servicos"
+                    className="mobile-dropdown-link"
+                    onClick={(e) => {
+                      closeMobileMenu();
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Serviços
                   </a>
                   <a
                     href="#para-quem-section"
@@ -365,16 +379,7 @@ useEffect(() => {
                   >
                     Para Quem
                   </a>
-                  <a
-                    href="#servicos"
-                    className="mobile-dropdown-link"
-                    onClick={(e) => {
-                      closeMobileMenu();
-                      setIsDropdownOpen(false);
-                    }}
-                  >
-                    Serviços
-                  </a>
+
                   <a
                     href="#depoimentos"
                     className="mobile-dropdown-link"
@@ -397,12 +402,18 @@ useEffect(() => {
                   </a>
                 </div>
               </li>
+              <li>
+                <a href="#" className="mobile-nav-link" onClick={closeMobileMenu}>
+                  Início
+                </a>
+              </li>
 
               <li>
                 <a href="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
                   Para Especialistas
                 </a>
               </li>
+
               <li>
                 <a href="/empresas" className="mobile-nav-link" onClick={closeMobileMenu}>
                   Para Empresas
@@ -492,12 +503,13 @@ useEffect(() => {
         <div className="container">
           <div className="section-header">
             <div className="section-badge">
-              <h2>
+              {/* <h2>
                 <span className="section-icon">
                   <Users className="icon" />
                 </span>
                 Nossos Especialistas
-              </h2>
+              </h2> */}
+              <div className='section-badge'><h1>Nossos Especialistas</h1></div>
             </div>
             <p className="section-subtitle">
               Conecte-se com profissionais qualificados e transforme sua jornada de bem-estar mental
