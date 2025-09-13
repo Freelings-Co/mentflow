@@ -88,14 +88,34 @@ const MentFlowLanding = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Adicione este useEffect após os outros useEffects existentes:
+
+// Adicione este useEffect após os outros useEffects existentes
+useEffect(() => {
+  const handleScroll = () => {
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+      setIsDropdownOpen(false);
+    }
+  };
+
+  if (mobileMenuOpen) {
+    window.addEventListener('scroll', handleScroll);
+  }
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, [mobileMenuOpen]);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
   const closeMobileMenu = () => {
-    setMobileMenuOpen(false)
+    setMobileMenuOpen(false);
+    setIsDropdownOpen(false); // Também fecha o dropdown
   }
-
   const steps = [
     {
       number: 1,
@@ -244,8 +264,20 @@ const MentFlowLanding = () => {
                     <a href="#como-funciona" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
                       Como Funciona
                     </a>
+                    <a href="#benefits-section" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Benefícios
+                    </a>
+                    <a href="#profissionais" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Especialistas
+                    </a>
+                    <a href="#section-mvv" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Nossa Essência
+                    </a>
                     <a href="#servicos" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
                       Serviços
+                    </a>
+                    <a href="#para-quem-section" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Para Quem
                     </a>
                     <a href="#depoimentos" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
                       Depoimentos
@@ -275,7 +307,11 @@ const MentFlowLanding = () => {
         <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
           <nav className='mobile-nav'>
             <ul className='mobile-nav-menu'>
-              <li><a href="/" className="mobile-nav-link">Início</a></li>
+              <li>
+                <a href="#" className="mobile-nav-link" onClick={closeMobileMenu}>
+                  Início
+                </a>
+              </li>
 
               <li className="mobile-dropdown">
                 <button
@@ -289,15 +325,89 @@ const MentFlowLanding = () => {
                   />
                 </button>
                 <div className={`mobile-dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
-                  <a href="#como-funciona" className="mobile-dropdown-link">Como Funciona</a>
-                  <a href="#servicos" className="mobile-dropdown-link">Serviços</a>
-                  <a href="#depoimentos" className="mobile-dropdown-link">Depoimentos</a>
-                  <a href="#contato" className="mobile-dropdown-link">Contato</a>
+                  <a
+                    href="#como-funciona"
+                    className="mobile-dropdown-link"
+                    onClick={(e) => {
+                      closeMobileMenu();
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Como Funciona
+                  </a>
+                  <a
+                    href="#benefits-section"
+                    className="mobile-dropdown-link"
+                    onClick={(e) => {
+                      closeMobileMenu();
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Benefícios
+                  </a>
+                  <a
+                    href="#profissionais"
+                    className="mobile-dropdown-link"
+                    onClick={(e) => {
+                      closeMobileMenu();
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Especialistas
+                  </a>
+                  <a
+                    href="#para-quem-section"
+                    className="mobile-dropdown-link"
+                    onClick={(e) => {
+                      closeMobileMenu();
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Para Quem
+                  </a>
+                  <a
+                    href="#servicos"
+                    className="mobile-dropdown-link"
+                    onClick={(e) => {
+                      closeMobileMenu();
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Serviços
+                  </a>
+                  <a
+                    href="#depoimentos"
+                    className="mobile-dropdown-link"
+                    onClick={(e) => {
+                      closeMobileMenu();
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Depoimentos
+                  </a>
+                  <a
+                    href="#contato"
+                    className="mobile-dropdown-link"
+                    onClick={(e) => {
+                      closeMobileMenu();
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Contato
+                  </a>
                 </div>
               </li>
 
-              <li><a href="/especialistas" className="mobile-nav-link">Para Especialistas</a></li>
-              <li><a href="/empresas" className="mobile-nav-link">Para Empresas</a></li>
+              <li>
+                <a href="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                  Para Especialistas
+                </a>
+              </li>
+              <li>
+                <a href="/empresas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                  Para Empresas
+                </a>
+              </li>
             </ul>
             <a
               href='#agendar'
@@ -351,10 +461,10 @@ const MentFlowLanding = () => {
 
       {/* Benefícios */}
       <Reveal>
-        <section className='section-benefits'>
+        <section className='section-benefits' id='benefits-section'>
           <div className='section benefits'>
             <div className='section-header'>
-              <div className='section-badge'><h1>Benefícios</h1></div>
+              <div className='section-badge' id='title-benefits'><h1>Benefícios</h1></div>
               <h2 className='section-title'>Por que escolher a MentFlow?</h2>
               <p className='section-subtitle'>
                 Oferecemos uma experiência única em terapia online
@@ -614,7 +724,7 @@ const MentFlowLanding = () => {
 
       {/* Missão, Visão e Valores */}
       <Reveal>
-        <section className='section-mvv'>
+        <section className='section-mvv' id='section-mvv'>
           <div className='container'>
             <div className='section-header'>
               <div className='section-badge'><h1>Missão, Visão e Valores</h1></div>
@@ -698,7 +808,7 @@ const MentFlowLanding = () => {
 
       {/* Para Quem */}
       <Reveal>
-        <section className='section target-audience'>
+        <section className='section target-audience' id='para-quem-section'>
           <div className='container'>
             <div className='audience-grid'>
               <div className='audience-content'>
@@ -807,7 +917,7 @@ const MentFlowLanding = () => {
       </Reveal>
 
       {/* CTA Final */}
-      <Reveal>
+      {/* <Reveal>
         <section className='cta-final'>
           <div className='container'>
             <div className='cta-content'>
@@ -823,7 +933,7 @@ const MentFlowLanding = () => {
             </div>
           </div>
         </section>
-      </Reveal>
+      </Reveal> */}
     </div>
   )
 }

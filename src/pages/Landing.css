@@ -240,6 +240,75 @@ body {
     box-shadow: 0 15px 50px rgba(215, 160, 132, 0.3);
 }
 
+/* Adicione estas regras CSS para o dropdown mobile */
+
+/* Mobile Dropdown Styles */
+.mobile-dropdown {
+    position: relative;
+}
+
+.dropdown-trigger-mobile {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.mobile-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+    background: var(--cor-background);
+    border-radius: var(--border-radius);
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.mobile-dropdown-content.open {
+    max-height: 400px;
+    opacity: 1;
+}
+
+.mobile-dropdown-link {
+    display: block;
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition-fast);
+    border-left: 3px solid transparent;
+}
+
+.mobile-dropdown-link:hover {
+    background: var(--cor-primaria-light);
+    color: var(--cor-primaria);
+    border-left-color: var(--cor-primaria);
+    transform: translateX(5px);
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+/* Força o fechamento do menu mobile */
+.mobile-menu:not(.open) {
+    transform: translateY(-100%) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+
 /* Hero Section */
 .hero {
 
@@ -1552,11 +1621,13 @@ label {
 @media (max-width: 480px) {
 
     .section-badge h1 {
-        font-size: 7vw;
+        font-size: 1.7rem;
+         margin-top: 2.2em;
     }
 
     .section-title {
         font-size: 5.5vw;
+       
     }
 
     .section-subtitle {
