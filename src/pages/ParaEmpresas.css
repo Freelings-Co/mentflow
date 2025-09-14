@@ -718,7 +718,7 @@ body {
 
 @media (max-width: 768px) {
 
-      .hero-empresas img {
+    .hero-empresas img {
 
         content: url(../assets/banner-empresas-mobile.webp);
 
@@ -746,16 +746,29 @@ body {
     }
 
     .timeline-step {
-        flex-direction: column;
+        flex-direction: column !important;
         text-align: center;
         margin-bottom: 3rem;
+        text-align: center !important;
     }
+
+    .timeline-description {
+        color: var(--cor-texto-claro);
+        line-height: 1.7;
+        font-size: 1.1rem;
+    }
+
+
+   
+
 
     .timeline-content {
         margin-left: 0;
         margin-top: 1.5rem;
         text-align: center !important;
         padding: 2rem !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
     }
 
     .timeline-content::before {
@@ -979,11 +992,11 @@ body {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .contato-empresas-form {
         padding: 1.5rem 1.25rem;
     }
-    
+
     .form-actions .cta-button {
         width: 100%;
         justify-content: center;

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Shield, UserCheck, CircleCheckBig, Menu, X, ArrowRight, Building2, TrendingUp, Clock, BarChart3, Lock, Star } from 'lucide-react';
+import { Users, Shield, UserCheck, CircleCheckBig, Menu, X, ArrowRight, Building2, TrendingUp, Clock, BarChart3, Lock, Star, ChevronDown } from 'lucide-react';
 import '../pages/ParaEmpresas.css';
 import logo from '../assets/full-logo.webp';
 import Banner from '../assets/banner-empresas.webp'
 import { WhatsappLogoIcon } from '@phosphor-icons/react';
 
 const ParaEmpresas = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   // Form state
   const [formData, setFormData] = useState({
     empresaNome: '',
@@ -22,9 +23,9 @@ const ParaEmpresas = () => {
     contatoEmail: '',
     contatoTelefone: ''
   });
-  
+
   const [formStatus, setFormStatus] = useState('');
-  
+
   // Generate WhatsApp link with form data
   const whatsappLink = `https://wa.me/SEUNUMERO?text=${encodeURIComponent(
     `*Nova Solicitação de Proposta*\n\n` +
@@ -40,7 +41,7 @@ const ParaEmpresas = () => {
     `E-mail: ${formData.contatoEmail || 'Não informado'}\n` +
     `Telefone: ${formData.contatoTelefone || 'Não informado'}`
   )}`;
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -48,7 +49,7 @@ const ParaEmpresas = () => {
       [name]: value
     }));
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here you would typically send the data to your backend
@@ -78,9 +79,30 @@ const ParaEmpresas = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  // Adicione este useEffect após os outros useEffects existentes
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
+        setIsDropdownOpen(false);
+      }
+    };
+
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [mobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setIsDropdownOpen(false); // Também fecha o dropdown
+  }
+
 
   return (
     <div className="para-empresas-page">
@@ -88,46 +110,169 @@ const ParaEmpresas = () => {
       <header className={`header ${isHeaderVisible ? 'visible' : ''}`}>
         <div className="container">
           <div className="header-content">
-            <img src={logo} alt="MentFlow" className="logo" />
-            
+            <img src="/src/assets/full-logo.webp" alt="MentFlow" className="logo" />
+
             <nav className="desktop-nav">
               <ul className="nav-menu">
-                <li><a href="/" className="nav-link">Início</a></li>
-                <li><a href="/especialistas" className="nav-link">Especialistas</a></li>
-                <li><a href="/para-empresas" className="nav-link">Para Empresas</a></li>
-                <li><a href="/sobre" className="nav-link">Sobre</a></li>
+                {/* <li><a href="/" className="nav-link">Início</a></li>
+                                <li><a href="#beneficios" className="nav-link">Benefícios</a></li>
+                                <li><a href="#como-funciona" className="nav-link">Como Funciona</a></li>
+                                <li><a href="#depoimento" className="nav-link">Depoimento</a></li> */}
+                <li><a href="#" className="nav-link">Início</a></li>
+
+                <li className="nav-dropdown">
+                  <button
+                    className="nav-link dropdown-trigger"
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  >
+                    Conhecer
+                    <ChevronDown
+                      size={16}
+                      className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
+                    />
+                  </button>
+
+                  <div className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
+                    <a href="#sobre" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Sobre
+                    </a>
+                    <a href="#como-funciona" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Como Funciona
+                    </a>
+                    <a href="#benefits-section" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Benefícios
+                    </a>
+                    <a href="#depoimento-section" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Depoimentos
+                    </a>
+                    <a href="#contato-empresas" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                      Contato
+                    </a>
+                  </div>
+                </li>
+
+                <li><a href="/" className="nav-link">Para Clientes</a></li>
+                <li><a href="/especialistas" className="nav-link">Para Especialistas</a></li>
               </ul>
             </nav>
 
             <div className="header-actions">
-              <a href="/cadastro" className="cta-button">Começar Agora</a>
-              <button className="mobile-menu-toggle" onClick={toggleMenu}>
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <a href="#contato-empresas" className="cta-button">Entrar em Contato</a>
+              <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+                ☰
               </button>
             </div>
           </div>
 
-          <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-            <nav className="mobile-nav">
-              <ul className="mobile-nav-menu">
-                <li><a href="/" className="mobile-nav-link">Início</a></li>
-                <li><a href="/especialistas" className="mobile-nav-link">Especialistas</a></li>
-                <li><a href="/empresas" className="mobile-nav-link">Para Empresas</a></li>
-                <li><a href="/sobre" className="mobile-nav-link">Sobre</a></li>
+          {/* Mobile Menu */}
+          <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+            <nav className='mobile-nav'>
+              <ul className='mobile-nav-menu'>
+
+                <li className="mobile-dropdown">
+                  <button
+                    className="mobile-nav-link dropdown-trigger-mobile"
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  >
+                    Conhecer
+                    <ChevronDown
+                      size={16}
+                      className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
+                    />
+                  </button>
+                  <div className={`mobile-dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
+                    <a
+                      href="#sobre"
+                      className="mobile-dropdown-link"
+                      onClick={(e) => {
+                        closeMobileMenu();
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      Sobre
+                    </a>
+
+                    <a
+                      href="#como-funciona"
+                      className="mobile-dropdown-link"
+                      onClick={(e) => {
+                        closeMobileMenu();
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      Como Funciona
+                    </a>
+                    <a
+                      href="#benefits-section"
+                      className="mobile-dropdown-link"
+                      onClick={(e) => {
+                        closeMobileMenu();
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      Benefícios
+                    </a>
+                    <a
+                      href="#depoimento-section"
+                      className="mobile-dropdown-link"
+                      onClick={(e) => {
+                        closeMobileMenu();
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      Depoimento
+                    </a>
+
+                    <a
+                      href="#contato-empresas"
+                      className="mobile-dropdown-link"
+                      onClick={(e) => {
+                        closeMobileMenu();
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      Contato
+                    </a>
+
+                  
+                  </div>
+                </li>
+                <li>
+                  <a href="#" className="mobile-nav-link" onClick={closeMobileMenu}>
+                    Início
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/" className="mobile-nav-link" onClick={closeMobileMenu}>
+                    Para Clientes
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                    Para Especialistas
+                  </a>
+                </li>
               </ul>
-              <a href="/cadastro" className="mobile-cta-button">Começar Agora</a>
+              <a
+                href='#contato-empresas'
+                className='mobile-cta-button'
+                onClick={closeMobileMenu}
+              >
+                Entrar em Contato
+              </a>
             </nav>
           </div>
         </div>
       </header>
-
 
       <section className='hero-empresas'>
         <img src={Banner} alt="" />
       </section>
 
       {/* Por que levar a MentFlow */}
-      <section className="section beneficios-empresas">
+      <section className="section beneficios-empresas" id='sobre'>
         <div className="container">
           <div className="section-header">
             <div className="section-badge">
@@ -180,7 +325,7 @@ const ParaEmpresas = () => {
       </section>
 
       {/* Como Funciona para Empresas */}
-      <section className="section como-funciona-empresas">
+      <section className="section como-funciona-empresas" id='como-funciona'>
         <div className="container">
           <div className="section-header">
             <div className="section-badge">
@@ -223,7 +368,7 @@ const ParaEmpresas = () => {
       </section>
 
       {/* Benefícios para sua Empresa */}
-      <section className="section beneficios-lista">
+      <section className="section beneficios-lista" id='benefits-section'>
         <div className="container">
           <div className="section-header">
             <div className="section-badge">
@@ -271,7 +416,7 @@ const ParaEmpresas = () => {
       </section>
 
       {/* Depoimento */}
-      <section className="section depoimento-empresa">
+      <section className="section depoimento-empresa" id='depoimento-section'>
         <div className="container">
           <div className="section-header">
             <div className="section-badge">
@@ -299,7 +444,7 @@ const ParaEmpresas = () => {
       </section>
 
       {/* CTA Final */}
-      <section className="section cta-empresas">
+      {/* <section className="section cta-empresas">
         <div className="container">
           <div className="cta-empresas-content">
             <div className="cta-empresas-text">
@@ -318,7 +463,7 @@ const ParaEmpresas = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Formulário de Contato para Empresas */}
       <section className='section contato-empresas' id='contato-empresas'>
@@ -328,55 +473,55 @@ const ParaEmpresas = () => {
             <h2 className='section-title'>Solicite uma Proposta</h2>
             <p className='section-subtitle'>Preencha o formulário abaixo e nossa equipe entrará em contato para apresentar uma solução personalizada para sua empresa.</p>
           </div>
-          
+
           <form className='contato-empresas-form' onSubmit={(e) => e.preventDefault()}>
             <fieldset className='form-fieldset'>
               <legend className='fieldset-legend'>
                 <Building2 size={24} />
                 <span>Dados da Empresa</span>
               </legend>
-              
+
               <div className='form-group'>
                 <label htmlFor='empresa-nome'>Nome da Empresa <span className='required'>*</span></label>
-                <input 
-                  type='text' 
-                  id='empresa-nome' 
-                  name='empresaNome' 
-                  required 
+                <input
+                  type='text'
+                  id='empresa-nome'
+                  name='empresaNome'
+                  required
                   placeholder='Digite o nome da sua empresa'
                 />
               </div>
-              
+
               <div className='form-group'>
                 <label htmlFor='empresa-cnpj'>CNPJ <span className='required'>*</span></label>
-                <input 
-                  type='text' 
-                  id='empresa-cnpj' 
-                  name='empresaCnpj' 
-                  required 
+                <input
+                  type='text'
+                  id='empresa-cnpj'
+                  name='empresaCnpj'
+                  required
                   placeholder='00.000.000/0000-00'
                 />
               </div>
-              
+
               <div className='form-group'>
                 <label htmlFor='empresa-segmento'>Segmento de Atuação <span className='required'>*</span></label>
-                <input 
-                  type='text' 
-                  id='empresa-segmento' 
-                  name='empresaSegmento' 
-                  required 
+                <input
+                  type='text'
+                  id='empresa-segmento'
+                  name='empresaSegmento'
+                  required
                   placeholder='Ex: Tecnologia, Varejo, Saúde, etc.'
                 />
               </div>
-              
+
               <div className='form-group'>
                 <label>Número de Colaboradores <span className='required'>*</span></label>
                 <div className='radio-group'>
                   {['1-10', '11-50', '51-200', '200+'].map((range) => (
                     <label key={range} className='radio-label'>
-                      <input 
-                        type='radio' 
-                        name='numColaboradores' 
+                      <input
+                        type='radio'
+                        name='numColaboradores'
                         value={range}
                         required
                       />
@@ -385,31 +530,31 @@ const ParaEmpresas = () => {
                   ))}
                 </div>
               </div>
-              
+
               <div className='form-row'>
                 <div className='form-group'>
                   <label htmlFor='empresa-cidade'>Cidade <span className='required'>*</span></label>
-                  <input 
-                    type='text' 
-                    id='empresa-cidade' 
-                    name='empresaCidade' 
-                    required 
+                  <input
+                    type='text'
+                    id='empresa-cidade'
+                    name='empresaCidade'
+                    required
                     placeholder='Sua cidade'
                   />
                 </div>
-                
+
                 <div className='form-group'>
                   <label htmlFor='empresa-estado'>Estado <span className='required'>*</span></label>
-                  <select 
-                    id='empresa-estado' 
-                    name='empresaEstado' 
+                  <select
+                    id='empresa-estado'
+                    name='empresaEstado'
                     required
                     defaultValue=''
                   >
                     <option value='' disabled>Selecione o estado</option>
                     {[
-                      'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 
-                      'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 
+                      'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA',
+                      'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN',
                       'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
                     ].map((uf) => (
                       <option key={uf} value={uf}>{uf}</option>
@@ -418,73 +563,73 @@ const ParaEmpresas = () => {
                 </div>
               </div>
             </fieldset>
-            
+
             <fieldset className='form-fieldset'>
               <legend className='fieldset-legend'>
                 <UserCheck size={24} />
                 <span>Responsável pelo Contato</span>
               </legend>
-              
+
               <div className='form-row'>
                 <div className='form-group'>
                   <label htmlFor='contato-nome'>Nome Completo <span className='required'>*</span></label>
-                  <input 
-                    type='text' 
-                    id='contato-nome' 
-                    name='contatoNome' 
-                    required 
+                  <input
+                    type='text'
+                    id='contato-nome'
+                    name='contatoNome'
+                    required
                     placeholder='Seu nome completo'
                   />
                 </div>
-                
+
                 <div className='form-group'>
                   <label htmlFor='contato-cargo'>Cargo/Função <span className='required'>*</span></label>
-                  <input 
-                    type='text' 
-                    id='contato-cargo' 
-                    name='contatoCargo' 
-                    required 
+                  <input
+                    type='text'
+                    id='contato-cargo'
+                    name='contatoCargo'
+                    required
                     placeholder='Ex: RH, CEO, Gestor de Pessoas'
                   />
                 </div>
               </div>
-              
+
               <div className='form-row'>
                 <div className='form-group'>
                   <label htmlFor='contato-email'>E-mail Corporativo <span className='required'>*</span></label>
-                  <input 
-                    type='email' 
-                    id='contato-email' 
-                    name='contatoEmail' 
-                    required 
+                  <input
+                    type='email'
+                    id='contato-email'
+                    name='contatoEmail'
+                    required
                     placeholder='seu.email@empresa.com'
                   />
                 </div>
-                
+
                 <div className='form-group'>
                   <label htmlFor='contato-telefone'>Telefone/WhatsApp <span className='required'>*</span></label>
-                  <input 
-                    type='tel' 
-                    id='contato-telefone' 
-                    name='contatoTelefone' 
-                    required 
+                  <input
+                    type='tel'
+                    id='contato-telefone'
+                    name='contatoTelefone'
+                    required
                     placeholder='(00) 00000-0000'
                   />
                 </div>
               </div>
             </fieldset>
-            
+
             <div className='form-actions'>
               <button type='submit' className='cta-button'>
                 Enviar Solicitação
                 <ArrowRight size={20} style={{ marginLeft: '8px' }} />
               </button>
-              <a 
-                href={whatsappLink} 
-                target='_blank' 
-                rel='noopener noreferrer' 
+              <a
+                href={whatsappLink}
+                target='_blank'
+                rel='noopener noreferrer'
                 className='cta-button whatsapp-btn'
-                style={{ 
+                style={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -503,7 +648,7 @@ const ParaEmpresas = () => {
         </div>
       </section>
 
-     
+
     </div>
   );
 };
