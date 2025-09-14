@@ -88,7 +88,6 @@ const MentFlowLanding = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Adicione este useEffect após os outros useEffects existentes:
 
   // Adicione este useEffect após os outros useEffects existentes
   useEffect(() => {
@@ -279,7 +278,7 @@ const MentFlowLanding = () => {
                     <a href="#depoimentos" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
                       Depoimentos
                     </a>
-                    <a href="#contato" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
+                    <a href="https://wa.me/351926599294?text=Ol%C3%A1%2C%20vim%20pelo%20site!" className="dropdown-link" onClick={() => setIsDropdownOpen(false)}>
                       Contato
                     </a>
                   </div>
@@ -290,7 +289,7 @@ const MentFlowLanding = () => {
               </ul>
             </nav>
             <div className='header-actions'>
-              <a href='#agendar' className='cta-button'>
+              <a href='#profissionais' className='cta-button'>
                 Agendar Consulta
               </a>
               <button className='mobile-menu-toggle' onClick={toggleMobileMenu}>
@@ -391,7 +390,7 @@ const MentFlowLanding = () => {
                     Depoimentos
                   </a>
                   <a
-                    href="#contato"
+                    href="https://wa.me/351926599294?text=Ol%C3%A1%2C%20vim%20pelo%20site!"
                     className="mobile-dropdown-link"
                     onClick={(e) => {
                       closeMobileMenu();
@@ -421,7 +420,7 @@ const MentFlowLanding = () => {
               </li>
             </ul>
             <a
-              href='#agendar'
+              href='#profissionais'
               className='mobile-cta-button'
               onClick={closeMobileMenu}
             >

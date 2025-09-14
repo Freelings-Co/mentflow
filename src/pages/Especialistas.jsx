@@ -27,7 +27,7 @@ import Reveal from '../components/Reveal'
 const Especialistas = () => {
     const [isHeaderVisible, setIsHeaderVisible] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,9 +38,30 @@ const Especialistas = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+
+    // Adicione este useEffect após os outros useEffects existentes
+    useEffect(() => {
+        const handleScroll = () => {
+            if (mobileMenuOpen) {
+                setMobileMenuOpen(false);
+                setIsDropdownOpen(false);
+            }
+        };
+
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [mobileMenuOpen]);
+
     const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-    };
+        setMobileMenuOpen(!mobileMenuOpen)
+    }
+
+    const closeMobileMenu = () => {
+        setMobileMenuOpen(false);
+        setIsDropdownOpen(false); // Também fecha o dropdown
+    }
 
     return (
         <div className="especialistas-page">
@@ -100,15 +121,132 @@ const Especialistas = () => {
                     </div>
 
                     {/* Mobile Menu */}
-                    <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-                        <nav className="mobile-nav">
-                            <ul className="mobile-nav-menu">
-                                <li><a href="/" className="mobile-nav-link">Início</a></li>
-                                <li><a href="#beneficios" className="mobile-nav-link">Benefícios</a></li>
-                                <li><a href="#como-funciona" className="mobile-nav-link">Como Funciona</a></li>
-                                <li><a href="#depoimento" className="mobile-nav-link">Depoimento</a></li>
+                    <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+                        <nav className='mobile-nav'>
+                            <ul className='mobile-nav-menu'>
+
+                                <li className="mobile-dropdown">
+                                    <button
+                                        className="mobile-nav-link dropdown-trigger-mobile"
+                                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                    >
+                                        Conhecer
+                                        <ChevronDown
+                                            size={16}
+                                            className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
+                                        />
+                                    </button>
+                                    <div className={`mobile-dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
+                                        <a
+                                            href="#como-funciona"
+                                            className="mobile-dropdown-link"
+                                            onClick={(e) => {
+                                                closeMobileMenu();
+                                                setIsDropdownOpen(false);
+                                            }}
+                                        >
+                                            Como Funciona
+                                        </a>
+                                        <a
+                                            href="#benefits-section"
+                                            className="mobile-dropdown-link"
+                                            onClick={(e) => {
+                                                closeMobileMenu();
+                                                setIsDropdownOpen(false);
+                                            }}
+                                        >
+                                            Benefícios
+                                        </a>
+                                        <a
+                                            href="#profissionais"
+                                            className="mobile-dropdown-link"
+                                            onClick={(e) => {
+                                                closeMobileMenu();
+                                                setIsDropdownOpen(false);
+                                            }}
+                                        >
+                                            Nossos Especialistas
+                                        </a>
+
+                                        <a
+                                            href="#section-mvv"
+                                            className="mobile-dropdown-link"
+                                            onClick={(e) => {
+                                                closeMobileMenu();
+                                                setIsDropdownOpen(false);
+                                            }}
+                                        >
+                                            Nossa Essência
+                                        </a>
+
+                                        <a
+                                            href="#servicos"
+                                            className="mobile-dropdown-link"
+                                            onClick={(e) => {
+                                                closeMobileMenu();
+                                                setIsDropdownOpen(false);
+                                            }}
+                                        >
+                                            Serviços
+                                        </a>
+                                        <a
+                                            href="#para-quem-section"
+                                            className="mobile-dropdown-link"
+                                            onClick={(e) => {
+                                                closeMobileMenu();
+                                                setIsDropdownOpen(false);
+                                            }}
+                                        >
+                                            Para Quem
+                                        </a>
+
+                                        <a
+                                            href="#depoimentos"
+                                            className="mobile-dropdown-link"
+                                            onClick={(e) => {
+                                                closeMobileMenu();
+                                                setIsDropdownOpen(false);
+                                            }}
+                                        >
+                                            Depoimentos
+                                        </a>
+                                        <a
+                                            href="https://wa.me/351926599294?text=Ol%C3%A1%2C%20vim%20pelo%20site!"
+                                            className="mobile-dropdown-link"
+                                            onClick={(e) => {
+                                                closeMobileMenu();
+                                                setIsDropdownOpen(false);
+                                            }}
+                                        >
+                                            Contato
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" className="mobile-nav-link" onClick={closeMobileMenu}>
+                                        Início
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                                        Para Especialistas
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/empresas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                                        Para Empresas
+                                    </a>
+                                </li>
                             </ul>
-                            <a href="#cadastro" className="mobile-cta-button">Cadastre-se</a>
+                            <a
+                                href='#profissionais'
+                                className='mobile-cta-button'
+                                onClick={closeMobileMenu}
+                            >
+                                Agendar Consulta
+                            </a>
                         </nav>
                     </div>
                 </div>
