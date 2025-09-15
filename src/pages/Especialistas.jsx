@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useForm } from 'react-hook-form';
 import './Especialistas.css';
 
 import {
@@ -17,7 +18,9 @@ import {
     CreditCard,
     BarChart3,
     Megaphone,
-    ArrowRight
+    ArrowRight,
+    X,
+    Upload
 } from 'lucide-react';
 
 import Banner from '../assets/banner-especialistas.webp'
@@ -29,6 +32,45 @@ const Especialistas = () => {
     const [isHeaderVisible, setIsHeaderVisible] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const modalRef = useRef(null);
+    
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    
+    const onSubmit = (data) => {
+        console.log('Form data:', data);
+        // Handle form submission here
+        // You can add API call to submit the form data
+        handleCloseModal();
+    };
+    
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+        document.body.style.overflow = 'hidden';
+    };
+    
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        document.body.style.overflow = 'auto';
+        reset();
+    };
+    
+    // Close modal when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+                handleCloseModal();
+            }
+        };
+        
+        if (isModalOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isModalOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -461,18 +503,299 @@ const Especialistas = () => {
                                         Junte-se a outros profissionais que estão transformando a forma de cuidar da saúde mental no Brasil.
                                         Clique no botão abaixo e dê o próximo passo na sua jornada profissional.
                                     </p>
-                                    <a href="#" className="cta-button-large">
+                                    <button onClick={handleOpenModal} className="cta-button-large">
                                         Quero Me Cadastrar
                                         <ArrowRight size={20} />
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </section>
                 </Reveal>
             </main>
+
+    {/* Registration Modal */}
+    {isModalOpen && (
+        <div className="modal-overlay">
+            <div className="modal-container" ref={modalRef}>
+                <button className="close-modal" onClick={handleCloseModal}>
+                    <X size={24} />
+                </button>
+                <h2>Cadastro de Psicólogo(a)</h2>
+                <p className="modal-subtitle">Preencha o formulário abaixo para se cadastrar em nossa plataforma</p>
+                
+                <form onSubmit={handleSubmit(onSubmit)} className="registration-form">
+                    <div className="form-section">
+                        <h3>👤 Informações Pessoais</h3>
+                        <div className="form-group">
+                            <label htmlFor="fullName">Nome Completo <span className="required">*</span></label>
+                            <input
+                                id="fullName"
+                                type="text"
+                                placeholder="Seu nome completo"
+                                {...register('fullName', { required: 'Este campo é obrigatório' })}
+                                className={errors.fullName ? 'error' : ''}
+                            />
+                            {errors.fullName && <span className="error-message">{errors.fullName.message}</span>}
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="email">E-mail Profissional <span className="required">*</span></label>
+                            <input
+                                id="email"
+                                type="email"
+                                placeholder="seu.email@exemplo.com"
+                                {...register('email', { 
+                                    required: 'Este campo é obrigatório',
+                                    pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        message: 'E-mail inválido'
+                                    }
+                                })}
+                                className={errors.email ? 'error' : ''}
+                            />
+                            {errors.email && <span className="error-message">{errors.email.message}</span>}
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="phone">Telefone / WhatsApp</label>
+                            <input
+                                id="phone"
+                                type="tel"
+                                placeholder="(00) 00000-0000"
+                                {...register('phone')}
+                            />
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="location">Cidade / Estado</label>
+                            <input
+                                id="location"
+                                type="text"
+                                placeholder="Sua cidade e estado"
+                                {...register('location')}
+                            />
+                        </div>
+                    </div>
+                    
+                    <div className="form-section">
+                        <h3>🎓 Formação Acadêmica</h3>
+                        <div className="form-group">
+                            <label htmlFor="crp">Número do CRP <span className="required">*</span></label>
+                            <input
+                                id="crp"
+                                type="text"
+                                placeholder="Ex: 00/00000-0"
+                                {...register('crp', { required: 'Este campo é obrigatório' })}
+                                className={errors.crp ? 'error' : ''}
+                            />
+                            {errors.crp && <span className="error-message">{errors.crp.message}</span>}
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="institution">Instituição de Formação</label>
+                            <input
+                                id="institution"
+                                type="text"
+                                placeholder="Nome da instituição"
+                                {...register('institution')}
+                            />
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="graduationYear">Ano de Conclusão</label>
+                            <input
+                                id="graduationYear"
+                                type="number"
+                                min="1900"
+                                max={new Date().getFullYear()}
+                                placeholder="Ano de conclusão"
+                                {...register('graduationYear')}
+                            />
+                        </div>
+                    </div>
+                    
+                    <div className="form-section">
+                        <h3>💼 Experiência Profissional</h3>
+                        <div className="form-group">
+                            <label htmlFor="experience">Tempo de atuação na área</label>
+                            <select id="experience" {...register('experience')}>
+                                <option value="">Selecione</option>
+                                <option value="1-3">1-3 anos</option>
+                                <option value="4-6">4-6 anos</option>
+                                <option value="7+">7+ anos</option>
+                            </select>
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="approaches">Abordagens/Técnicas utilizadas</label>
+                            <input
+                                id="approaches"
+                                type="text"
+                                placeholder="Ex: TCC, Psicanálise, Humanista"
+                                {...register('approaches')}
+                            />
+                            <small className="hint">Separe as abordagens por vírgula</small>
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="specialties">Principais especialidades</label>
+                            <input
+                                id="specialties"
+                                type="text"
+                                placeholder="Ex: ansiedade, depressão, terapia de casal"
+                                {...register('specialties')}
+                            />
+                            <small className="hint">Separe as especialidades por vírgula</small>
+                        </div>
+                    </div>
+                    
+                    <div className="form-section">
+                        <h3>🖥️ Preferências de Atendimento</h3>
+                        <div className="form-group">
+                            <p className="telemedicine-note">
+                                <strong>Modalidade de Atendimento:</strong> Todas as consultas serão realizadas por telemedicina (vídeo).
+                            </p>
+                        </div>
+                        
+                        <div className="form-group">
+                            <label>Horários Disponíveis</label>
+                            <div className="checkbox-group">
+                                <label className="checkbox-label">
+                                    <input type="checkbox" {...register('availability_morning')} />
+                                    <span>Manhã</span>
+                                </label>
+                                <label className="checkbox-label">
+                                    <input type="checkbox" {...register('availability_afternoon')} />
+                                    <span>Tarde</span>
+                                </label>
+                                <label className="checkbox-label">
+                                    <input type="checkbox" {...register('availability_evening')} />
+                                    <span>Noite</span>
+                                </label>
+                                <label className="checkbox-label">
+                                    <input type="checkbox" {...register('availability_weekend')} />
+                                    <span>Finais de semana</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="languages">Idiomas de Atendimento</label>
+                            <input
+                                id="languages"
+                                type="text"
+                                placeholder="Ex: Português, Inglês, Espanhol"
+                                {...register('languages')}
+                            />
+                        </div>
+                    </div>
+                    
+                    <div className="form-section">
+                        <h3>📎 Documentos</h3>
+                        <div className="form-group">
+                            <label htmlFor="crpFile">Upload do CRP ou Carteira Profissional <span className="required">*</span></label>
+                            <div className="file-upload">
+                                <label htmlFor="crpFile" className="file-upload-label">
+                                    <Upload size={16} />
+                                    <span>Selecionar arquivo</span>
+                                </label>
+                                <input
+                                    id="crpFile"
+                                    type="file"
+                                    accept=".pdf,.jpg,.jpeg,.png"
+                                    {...register('crpFile', { required: 'Este campo é obrigatório' })}
+                                    className="file-input"
+                                />
+                                <span className="file-name" id="crpFileName">Nenhum arquivo selecionado</span>
+                            </div>
+                            {errors.crpFile && <span className="error-message">{errors.crpFile.message}</span>}
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="resume">Currículo / LinkedIn (opcional)</label>
+                            <div className="file-upload">
+                                <label htmlFor="resume" className="file-upload-label">
+                                    <Upload size={16} />
+                                    <span>Selecionar arquivo ou link</span>
+                                </label>
+                                <input
+                                    id="resume"
+                                    type="file"
+                                    accept=".pdf,.doc,.docx"
+                                    {...register('resume')}
+                                    className="file-input"
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Ou cole o link do LinkedIn"
+                                    className="link-input"
+                                    {...register('linkedin')}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="form-section">
+                        <h3>💬 Mensagem de Apresentação</h3>
+                        <div className="form-group">
+                            <label htmlFor="bio">Conte um pouco sobre você e por que deseja atender pela plataforma</label>
+                            <textarea
+                                id="bio"
+                                rows="4"
+                                placeholder="Fale sobre sua experiência, abordagens, e o que te motiva a trabalhar como psicólogo(a)..."
+                                {...register('bio')}
+                            ></textarea>
+                        </div>
+                    </div>
+                    
+                    <div className="form-section consent-section">
+                        <div className="form-group">
+                            <label className="checkbox-label">
+                                <input
+                                    type="checkbox"
+                                    {...register('consent', { required: 'Você deve aceitar os termos para continuar' })}
+                                    className={errors.consent ? 'error' : ''}
+                                />
+                                <span>Declaro que sou psicólogo(a) com registro válido no CRP e aceito os <a href="/termos-de-uso" target="_blank" rel="noopener noreferrer">Termos de Uso</a> e <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.</span>
+                            </label>
+                            {errors.consent && <span className="error-message">{errors.consent.message}</span>}
+                        </div>
+                    </div>
+                    
+                    <div className="form-actions">
+                        <button type="button" className="btn-secondary" onClick={handleCloseModal}>
+                            Cancelar
+                        </button>
+                        <button type="submit" className="btn-primary">
+                            Enviar Cadastro
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    );
+    )}
+    
+    {/* Add script to handle file input display */}
+    <script dangerouslySetInnerHTML={{
+        __html: `
+            document.addEventListener('DOMContentLoaded', function() {
+                const fileInputs = document.querySelectorAll('.file-input');
+                
+                fileInputs.forEach(input => {
+                    input.addEventListener('change', function() {
+                        const fileName = this.files[0] ? this.files[0].name : 'Nenhum arquivo selecionado';
+                        const fileNameDisplay = this.parentElement.querySelector('.file-name');
+                        if (fileNameDisplay) {
+                            fileNameDisplay.textContent = fileName;
+                        }
+                    });
+                });
+            }
+        `
+    }} />
+</div>
+);
 };
 
 export default Especialistas;
