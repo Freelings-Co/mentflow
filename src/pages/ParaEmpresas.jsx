@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Shield, UserCheck, CircleCheckBig, Menu, X, ArrowRight, Building2, TrendingUp, Clock, BarChart3, Lock, Star, ChevronDown } from 'lucide-react';
 import '../pages/ParaEmpresas.css';
-import logo from '../assets/full-logo.webp';
+import Logo from '../assets/full-logo.webp';
 import Banner from '../assets/banner-empresas.webp'
 import { WhatsappLogoIcon } from '@phosphor-icons/react';
 
@@ -110,7 +110,7 @@ const ParaEmpresas = () => {
       <header className={`header ${isHeaderVisible ? 'visible' : ''}`}>
         <div className="container">
           <div className="header-content">
-            <img src="/src/assets/full-logo.webp" alt="MentFlow" className="logo" />
+            <img src={Logo} alt="MentFlow" className="logo" />
 
             <nav className="desktop-nav">
               <ul className="nav-menu">

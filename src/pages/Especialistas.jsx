@@ -23,6 +23,7 @@ import {
 import Banner from '../assets/banner-especialistas.webp'
 import CtaImage from '../assets/cta-image-especialistas.webp'
 import Reveal from '../components/Reveal'
+import Logo from '../assets/full-logo.webp'
 
 const Especialistas = () => {
     const [isHeaderVisible, setIsHeaderVisible] = useState(false);
@@ -69,7 +70,7 @@ const Especialistas = () => {
             <header className={`header ${isHeaderVisible ? 'visible' : ''}`}>
                 <div className="container">
                     <div className="header-content">
-                        <img src="/src/assets/full-logo.webp" alt="MentFlow" className="logo" />
+                        <img src={Logo} alt="MentFlow" className="logo" />
 
                         <nav className="desktop-nav">
                             <ul className="nav-menu">
