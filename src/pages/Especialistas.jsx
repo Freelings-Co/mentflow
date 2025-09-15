@@ -254,7 +254,7 @@ const Especialistas = () => {
                                             Depoimentos
                                         </a>
                                         <a
-                                            href="https://wa.me/351926599294?text=Ol%C3%A1%2C%20vim%20pelo%20site!"
+                                            href="https://wa.me/558588947255?text=Ol%C3%A1%2C%20vim%20pelo%20site!"
                                             className="mobile-dropdown-link"
                                             onClick={(e) => {
                                                 closeMobileMenu();

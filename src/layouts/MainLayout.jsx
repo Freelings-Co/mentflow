@@ -16,8 +16,8 @@ export default function MainLayout({ children }) {
           </div>
           <div className={styles.contact}>
             Contato:{' '}
-            <a href='mailto:atendimento@mentflow.com'>
-              atendimento@mentflow.com
+            <a href='mailto:atendimento@mentflow.com.br'>
+              atendimento@mentflow.com.br
             </a>
           </div>
           <div className={styles.socials}>
