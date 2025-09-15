@@ -1,6 +1,6 @@
 # MentFlow - Plataforma de Saúde Mental Online
 
-![MentFlow Logo](public/vite.svg)
+![MentFlow Logo](src/assets/full-logo.webp)
 
 Bem-vindo ao repositório oficial do **MentFlow**, uma plataforma inovadora que conecta psicólogos qualificados a pacientes em busca de atendimento psicológico online de forma acessível e segura.
 
@@ -94,7 +94,7 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 📞 Contato
 
-Para mais informações, entre em contato pelo email: contato@mentflow.com
+Para mais informações, entre em contato pelo email: atendimento@mentflow.com.br
 
 ---
 
