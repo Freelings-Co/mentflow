@@ -48,8 +48,8 @@ const MentFlowLanding = () => {
   const [contatoStatus, setContatoStatus] = useState('')
 
   // Gera link do WhatsApp com mensagem preenchida
-  const whatsappLink = `https://wa.me/SEUNUMERO?text=${encodeURIComponent(
-    `Nome: ${contato.nome}\nEmail: ${contato.email}\nTelefone: ${contato.telefone}\nMensagem: ${contato.mensagem}`
+  const whatsappLink = `https://wa.me/558588947255?text=${encodeURIComponent(
+    `Olá, vim pelo site!\n\nNome: ${contato.nome || 'Não informado'}\nEmail: ${contato.email || 'Não informado'}\nTelefone: ${contato.telefone || 'Não informado'}\n\nMensagem:\n${contato.mensagem || 'Gostaria de mais informações'}`
   )}`
 
   const handleContatoChange = (e) => {
@@ -57,21 +57,19 @@ const MentFlowLanding = () => {
     setContato((prev) => ({ ...prev, [name]: value }))
   }
 
-  // Placeholder para lógica de envio por email (ex: EmailJS ou backend)
-  const handleContatoSubmit = async (e) => {
-    e.preventDefault()
-    setContatoStatus('Enviando...')
-    try {
-      // Aqui você pode integrar com EmailJS, Formspree ou seu backend
-      // Exemplo com EmailJS:
-      // await emailjs.send(/* ... */)
-      setTimeout(() => {
-        setContatoStatus('Mensagem enviada com sucesso!')
-        setContato({ nome: '', email: '', telefone: '', mensagem: '' })
-      }, 1200)
-    } catch (error) {
-      setContatoStatus('Erro ao enviar. Tente novamente.')
-    }
+  // Função para enviar email usando mailto:
+  const handleContatoSubmit = (e) => {
+    e.preventDefault();
+    
+    const { nome, email, telefone, mensagem } = contato;
+    const subject = `Contato do Site - ${nome}`;
+    const body = `Nome: ${nome}%0D%0AEmail: ${email}%0D%0ATelefone: ${telefone}%0D%0A%0D%0AMensagem:%0D%0A${mensagem}`;
+    
+    window.location.href = `mailto:atendimento@mentflow.com.br?subject=${encodeURIComponent(subject)}&body=${body}`;
+    
+    // Atualiza o status e limpa o formulário
+    setContatoStatus('Redirecionando para o cliente de email...');
+    setContato({ nome: '', email: '', telefone: '', mensagem: '' });
   }
 
   const [headerVisible, setHeaderVisible] = useState(false)

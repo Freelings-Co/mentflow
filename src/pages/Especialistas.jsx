@@ -44,9 +44,30 @@ const Especialistas = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = (data) => {
-        console.log('Form data:', data);
-        // Handle form submission here
-        // You can add API call to submit the form data
+        // Format the email body
+        const subject = `Novo Cadastro de Psicólogo - ${data.fullName || 'Sem nome'}`;
+        let body = 'Novo cadastro de psicólogo:\n\n';
+        
+        // Add all form fields to the email body
+        Object.entries(data).forEach(([key, value]) => {
+            if (value && typeof value !== 'object') {
+                const label = key
+                    .replace(/([A-Z])/g, ' $1')
+                    .replace(/^./, str => str.toUpperCase())
+                    .replace(/Crp/g, 'CRP')
+                    .replace(/Cpf/g, 'CPF');
+                body += `${label}: ${value}\n`;
+            }
+        });
+        
+        // Create mailto link
+        const mailtoLink = `mailto:atendimento@mentflow.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Open default email client
+        window.location.href = mailtoLink;
+        
+        // Show success message and close modal
+        alert('Abrindo seu cliente de email... Por favor, envie o formulário preenchido.');
         handleCloseModal();
     };
 

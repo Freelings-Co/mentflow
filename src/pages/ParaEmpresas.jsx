@@ -27,7 +27,7 @@ const ParaEmpresas = () => {
   const [formStatus, setFormStatus] = useState('');
 
   // Generate WhatsApp link with form data
-  const whatsappLink = `https://wa.me/SEUNUMERO?text=${encodeURIComponent(
+  const whatsappLink = `https://wa.me/558588947255?text=${encodeURIComponent(
     `*Nova Solicitação de Proposta*\n\n` +
     `*Dados da Empresa*\n` +
     `Nome: ${formData.empresaNome || 'Não informado'}\n` +
@@ -52,8 +52,33 @@ const ParaEmpresas = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log('Form submitted:', formData);
+    
+    // Format the email body
+    const subject = `Nova Solicitação de Empresa - ${formData.empresaNome || 'Sem nome'}`;
+    let body = 'Nova solicitação de empresa:\n\n';
+    
+    // Add all form fields to the email body
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value && typeof value !== 'object') {
+        const label = key
+          .replace(/([A-Z])/g, ' $1')
+          .replace(/^./, str => str.toUpperCase())
+          .replace(/Cnpj/g, 'CNPJ')
+          .replace(/Qtd/g, 'Quantidade');
+        body += `${label}: ${value}\n`;
+      } else if (Array.isArray(value)) {
+        body += `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value.join(', ')}\n`;
+      }
+    });
+    
+    // Create mailto link
+    const mailtoLink = `mailto:atendimento@mentflow.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    alert('Abrindo seu cliente de email... Por favor, envie o formulário preenchido.');
     setFormStatus('Solicitação enviada com sucesso! Entraremos em contato em breve.');
     // Reset form after submission
     setFormData({
