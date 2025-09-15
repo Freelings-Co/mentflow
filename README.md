@@ -1,43 +1,45 @@
-# MentFlow - Plataforma de Mentoria e Desenvolvimento Profissional
+# MentFlow - Plataforma de Saúde Mental Online
 
-![MentFlow Logo](public/vite.svg) <!-- Adicione o caminho correto para o logo do projeto -->
+![MentFlow Logo](public/vite.svg)
 
-Bem-vindo ao repositório oficial do **MentFlow**, uma plataforma inovadora que conecta profissionais experientes a pessoas em busca de orientação e desenvolvimento de carreira.
+Bem-vindo ao repositório oficial do **MentFlow**, uma plataforma inovadora que conecta psicólogos qualificados a pacientes em busca de atendimento psicológico online de forma acessível e segura.
 
-## 📋 Visão Geral
+## Visão Geral
 
-O MentFlow é uma solução digital que visa facilitar o acesso a mentoria de qualidade, proporcionando um ambiente onde especialistas podem compartilhar conhecimento e experiências com quem está dando os primeiros passos ou buscando transição de carreira.
+O MentFlow é uma solução digital que visa democratizar o acesso à saúde mental, proporcionando um ambiente seguro e confiável para conexão entre profissionais de psicologia e pacientes. Nossa plataforma facilita o agendamento de consultas online, tornando o cuidado com a saúde mental mais acessível.
 
-## ✨ Funcionalidades Principais
+## Funcionalidades Principais
 
-- **Perfis de Mentores**: Acesso a perfis detalhados de mentores experientes em diversas áreas
-- **Agendamento Inteligente**: Sistema integrado de agendamento de sessões de mentoria
-- **Acompanhamento de Progresso**: Ferramentas para acompanhar o desenvolvimento profissional
-- **Recursos Educacionais**: Materiais e recursos para desenvolvimento contínuo
-- **Comunicação Segura**: Chat e videochamada integrados para sessões online
+- **Atendimento Online**: Consultas por vídeo com psicólogos certificados
+- **Busca de Profissionais**: Encontre o psicólogo ideal por especialidade e abordagem
+- **Agendamento Simplificado**: Sistema de agendamento integrado e fácil de usar
+- **Segurança e Privacidade**: Ambiente seguro para suas consultas e dados
+- **Acesso Ilimitado**: Disponível 24/7 de qualquer dispositivo
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Frontend**: React.js com Vite
 - **Estilização**: CSS Modules
-- **Roteamento**: React Router
-- **Gerenciamento de Estado**: Context API
+- **Roteamento**: React Router v6
+- **Gerenciamento de Estado**: React Hooks e Context API
+- **Formulários**: React Hook Form
+- **Ícones**: Lucide React e Phosphor Icons
 - **Build e Deploy**: Vite
 - **Controle de Versão**: Git
 
-## 🛠️ Como Executar o Projeto
+## Como Executar o Projeto Localmente
 
 ### Pré-requisitos
 
 - Node.js (versão 16 ou superior)
-- npm ou yarn
+- npm (v8 ou superior) ou yarn (1.22 ou superior)
 - Git
 
 ### Instalação
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/mentflow.git
+   git clone https://github.com/Freelings-Co/mentflow.git
    cd mentflow
    ```
 
@@ -45,7 +47,7 @@ O MentFlow é uma solução digital que visa facilitar o acesso a mentoria de qu
    ```bash
    npm install
    # ou
-   yarn install
+   yarn
    ```
 
 3. Inicie o servidor de desenvolvimento:
