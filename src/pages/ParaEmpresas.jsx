@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Users, Shield, UserCheck, CircleCheckBig, Menu, X, ArrowRight, Building2, TrendingUp, Clock, BarChart3, Lock, Star, ChevronDown } from 'lucide-react';
 import '../pages/ParaEmpresas.css';
 import Logo from '../assets/full-logo.webp';
@@ -143,7 +144,7 @@ const ParaEmpresas = () => {
                                 <li><a href="#beneficios" className="nav-link">Benefícios</a></li>
                                 <li><a href="#como-funciona" className="nav-link">Como Funciona</a></li>
                                 <li><a href="#depoimento" className="nav-link">Depoimento</a></li> */}
-                <li><a href="#" className="nav-link">Início</a></li>
+                <li><Link to="/" className="nav-link">Início</Link></li>
 
                 <li className="nav-dropdown">
                   <button
@@ -176,13 +177,13 @@ const ParaEmpresas = () => {
                   </div>
                 </li>
 
-                <li><a href="/" className="nav-link">Para Clientes</a></li>
-                <li><a href="/especialistas" className="nav-link">Para Especialistas</a></li>
+                <li><Link to="/" className="nav-link">Para Clientes</Link></li>
+                <li><Link to="/especialistas" className="nav-link">Para Especialistas</Link></li>
               </ul>
             </nav>
 
             <div className="header-actions">
-              <a href="#contato-empresas" className="cta-button">Entrar em Contato</a>
+              <Link to="#contato-empresas" className="cta-button">Entrar em Contato</Link>
               <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
                 ☰
               </button>
@@ -263,21 +264,21 @@ const ParaEmpresas = () => {
                   </div>
                 </li>
                 <li>
-                  <a href="#" className="mobile-nav-link" onClick={closeMobileMenu}>
+                  <Link to="/" className="mobile-nav-link" onClick={closeMobileMenu}>
                     Início
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a href="/" className="mobile-nav-link" onClick={closeMobileMenu}>
+                  <Link to="/" className="mobile-nav-link" onClick={closeMobileMenu}>
                     Para Clientes
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a href="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                  <Link to="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
                     Para Especialistas
-                  </a>
+                  </Link>
                 </li>
               </ul>
               <a
