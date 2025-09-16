@@ -1,0 +1,30 @@
+# .github/workflows/hostinger-deploy.yml
+name: Build & Push static to Hostinger branch
+on:
+  push:
+    branches: [ main ]   # quando fizer push na main, dispara o build
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Publish dist to hostinger-deploy
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          rm -rf .git
+          cd dist
+          git init
+          git add -A
+          git commit -m "Deploy"
+          git branch -M hostinger-deploy
+          git remote add origin https://github.com/Freelings-Co/mentflow.git
+          git push -f origin hostinger-deploy
