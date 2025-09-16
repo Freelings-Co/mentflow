@@ -1,0 +1,53 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variações de animação */
+.reveal.slideLeft {
+  transform: translateX(-30px);
+}
+
+.reveal.slideRight {
+  transform: translateX(30px);
+}
+
+.reveal.scale {
+  transform: scale(0.95);
+}
+
+.visible.slideLeft,
+.visible.slideRight {
+  transform: translateX(0);
+}
+
+.visible.scale {
+  transform: scale(1);
+}
+
+/* Animação mais suave para elementos pequenos */
+.reveal.subtle {
+  transform: translateY(15px);
+  transition: all 0.4s ease-out;
+}
+
+/* Delay para animações em sequência */
+.reveal.delay-1 { transition-delay: 0.1s; }
+.reveal.delay-2 { transition-delay: 0.2s; }
+.reveal.delay-3 { transition-delay: 0.3s; }
+.reveal.delay-4 { transition-delay: 0.4s; }
+.reveal.delay-5 { transition-delay: 0.5s; }
+
+/* Respeitar preferências de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+}

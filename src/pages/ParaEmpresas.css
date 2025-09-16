@@ -1,0 +1,1033 @@
+@import '../styles/colors.css';
+
+/* Reset e configurações base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--cor-texto);
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
+
+/* Header - Reutilizando da Especialistas */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--cor-branco);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(215, 160, 132, 0.1);
+    transform: translateY(-100%);
+    transition: var(--transition);
+}
+
+.header.visible {
+    transform: translateY(0);
+    box-shadow: var(--sombra-suave);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+}
+
+.logo {
+    width: 15em;
+    object-fit: cover;
+    height: 3em;
+}
+
+.hero-empresas img {
+    object-fit: cover;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+}
+
+
+.logo:hover {
+    color: var(--cor-primaria);
+    transform: scale(1.05);
+}
+
+.desktop-nav {
+    display: flex;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+.nav-link {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    transition: var(--transition);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--cor-primaria);
+    transition: var(--transition-fast);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover {
+    color: var(--cor-destaque);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cta-button {
+    background: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    box-shadow: var(--sombra-colorida);
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 18px var(--cor-primaria);
+    color: var(--cor-branco);
+    background: var(--cor-destaque);
+}
+
+/* Mobile Menu */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--cor-destaque);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition-fast);
+    font-size: 1.5rem;
+}
+
+.mobile-menu-toggle:hover {
+    background: var(--cor-primaria-light);
+    color: var(--cor-primaria);
+}
+
+.mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(215, 160, 132, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    box-shadow: var(--sombra-media);
+}
+
+.mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav {
+    padding: 2rem;
+}
+
+.mobile-nav-menu {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.mobile-nav-menu li {
+    margin-bottom: 1rem;
+}
+
+.mobile-nav-link {
+    display: block;
+    color: var(--cor-texto);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition-fast);
+}
+
+.mobile-nav-link:hover {
+    background: var(--cor-primaria-light);
+    color: var(--cor-primaria);
+    transform: translateX(10px);
+}
+
+.mobile-cta-button {
+    display: block;
+    background: var(--gradient-primary);
+    color: var(--cor-branco);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--sombra-colorida);
+}
+
+.mobile-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 50px rgba(215, 160, 132, 0.3);
+}
+
+/* Seções gerais */
+.section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.section:nth-child(even) {
+    background: var(--cor-background);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-badge h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--cor-texto);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+/* Benefícios para Empresas */
+.beneficios-empresas {
+    background: var(--cor-branco);
+    padding-top: 8rem;
+}
+
+.beneficios-empresas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.beneficio-empresa-card {
+    background: linear-gradient(135deg, var(--cor-background) 0%, rgba(215, 160, 132, 0.05) 100%);
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(215, 160, 132, 0.1);
+    transition: var(--transition);
+    text-align: center;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.beneficio-empresa-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.beneficio-empresa-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(215, 160, 132, 0.2);
+    border-color: var(--cor-primaria);
+}
+
+.beneficio-empresa-card:hover::before {
+    transform: scaleX(1);
+}
+
+.beneficio-empresa-icon {
+    color: var(--cor-primaria);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(215, 160, 132, 0.1);
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    transition: var(--transition);
+}
+
+.beneficio-empresa-card:hover .beneficio-empresa-icon {
+    background: var(--cor-primaria);
+    color: var(--cor-branco);
+    transform: scale(1.1);
+}
+
+.beneficio-empresa-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--cor-destaque);
+    margin-bottom: 1.5rem;
+}
+
+.beneficio-empresa-description {
+    color: var(--cor-texto-claro);
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* Como Funciona para Empresas */
+.como-funciona-empresas {
+    background: var(--cor-background);
+}
+
+.timeline-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--gradient-primary);
+    transform: translateX(-50%);
+}
+
+.timeline-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.timeline-step:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-step:nth-child(even) .timeline-content {
+    text-align: right;
+    padding-right: 3rem;
+    padding-left: 0;
+}
+
+.timeline-number {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    color: var(--cor-branco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(215, 160, 132, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-content {
+    flex: 1;
+    background: var(--cor-branco);
+    padding: 2.5rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-left: 2rem;
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid var(--cor-branco);
+    transform: translateY(-50%);
+}
+
+.timeline-step:nth-child(even) .timeline-content::before {
+    left: auto;
+    right: -10px;
+    border-right: none;
+    border-left: 10px solid var(--cor-branco);
+}
+
+.timeline-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-destaque);
+    margin-bottom: 1rem;
+}
+
+.timeline-description {
+    color: var(--cor-texto-claro);
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+/* Benefícios Lista */
+.beneficios-lista {
+    background: var(--cor-branco);
+}
+
+.beneficios-lista-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.beneficio-lista-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: var(--cor-background);
+    border-radius: 15px;
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+}
+
+.beneficio-lista-item:hover {
+    background: rgba(215, 160, 132, 0.05);
+    transform: translateX(10px);
+    border-left-color: var(--cor-primaria);
+}
+
+.beneficio-lista-icon {
+    color: var(--cor-primaria);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(215, 160, 132, 0.1);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.beneficio-lista-item:hover .beneficio-lista-icon {
+    background: var(--cor-primaria);
+    color: var(--cor-branco);
+    transform: scale(1.1);
+}
+
+.beneficio-lista-text {
+    font-weight: 600;
+    color: var(--cor-destaque);
+    font-size: 1.1rem;
+}
+
+/* Depoimento Empresa */
+.depoimento-empresa {
+    background: linear-gradient(135deg, var(--cor-primaria-light) 0%, rgba(215, 160, 132, 0.1) 100%);
+}
+
+.depoimento-empresa-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--cor-branco);
+    padding: 4rem 3rem;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(215, 160, 132, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.depoimento-empresa-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(215, 160, 132, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.depoimento-empresa-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.depoimento-empresa-quote {
+    color: var(--cor-primaria);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.depoimento-empresa-text {
+    font-size: 1.3rem;
+    color: var(--cor-texto);
+    font-style: italic;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    position: relative;
+}
+
+.depoimento-empresa-text::before,
+.depoimento-empresa-text::after {
+    content: '"';
+    font-size: 4rem;
+    color: var(--cor-primaria);
+    font-family: serif;
+    position: absolute;
+    opacity: 0.3;
+}
+
+.depoimento-empresa-text::before {
+    top: -20px;
+    left: -20px;
+}
+
+.depoimento-empresa-text::after {
+    bottom: -40px;
+    right: -20px;
+}
+
+.depoimento-empresa-author {
+    display: flex;
+    justify-content: center;
+}
+
+.author-info {
+    text-align: center;
+}
+
+.author-name {
+    font-weight: 700;
+    color: var(--cor-destaque);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.author-role {
+    font-size: 1rem;
+    color: var(--cor-primaria);
+    font-weight: 500;
+}
+
+/* CTA Empresas */
+.cta-empresas {
+    background: var(--cor-background);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-empresas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(215, 160, 132, 0.05) 100%);
+    pointer-events: none;
+}
+
+.cta-empresas-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-empresas-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-empresas-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    color: var(--cor-destaque);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cta-empresas-icon {
+    color: var(--cor-primaria);
+    flex-shrink: 0;
+}
+
+.cta-empresas-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    color: var(--cor-texto-claro);
+    line-height: 1.7;
+}
+
+.cta-empresas-button {
+    background: var(--gradient-primary);
+    color: var(--cor-branco);
+    padding: 1.5rem 3.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    box-shadow: 0 15px 40px rgba(215, 160, 132, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-empresas-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.cta-empresas-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 60px rgba(215, 160, 132, 0.4);
+    color: var(--cor-branco);
+}
+
+.cta-empresas-button:hover::before {
+    left: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .cta-button {
+        display: none;
+    }
+
+    .timeline-container::before {
+        left: 40px;
+    }
+
+    .timeline-step {
+        flex-direction: row !important;
+    }
+
+    .timeline-step .timeline-content {
+        text-align: left !important;
+        padding-left: 3rem !important;
+        padding-right: 2rem !important;
+        margin-left: 2rem;
+    }
+
+    .timeline-step .timeline-content::before {
+        left: -10px !important;
+        right: auto !important;
+        border-right: 10px solid var(--cor-branco) !important;
+        border-left: none !important;
+    }
+
+    .timeline-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hero-empresas img {
+
+        content: url(../assets/banner-empresas-mobile.webp);
+
+    }
+
+    .section {
+        padding: 4rem 0;
+    }
+
+    .section-badge h1 {
+        font-size: 2rem;
+    }
+
+    .beneficios-empresas {
+        padding-top: 6rem;
+    }
+
+    .beneficios-empresas-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .timeline-container::before {
+        display: none;
+    }
+
+    .timeline-step {
+        flex-direction: column !important;
+        text-align: center;
+        margin-bottom: 3rem;
+        text-align: center !important;
+    }
+
+    .timeline-description {
+        color: var(--cor-texto-claro);
+        line-height: 1.7;
+        font-size: 1.1rem;
+    }
+
+
+   
+
+
+    .timeline-content {
+        margin-left: 0;
+        margin-top: 1.5rem;
+        text-align: center !important;
+        padding: 2rem !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .timeline-content::before {
+        display: none;
+    }
+
+    .beneficio-lista-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .beneficio-lista-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .cta-empresas-title {
+        font-size: 2.2rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cta-empresas-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .depoimento-empresa-card {
+        padding: 3rem 2rem;
+    }
+
+    .depoimento-empresa-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+
+    .beneficios-empresas {
+        padding-top: 5rem;
+    }
+
+    .section-badge h1 {
+        font-size: 1.7rem;
+    }
+
+    .beneficio-empresa-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .beneficio-empresa-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .timeline-content {
+        padding: 1.5rem !important;
+    }
+
+    .timeline-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .cta-empresas-title {
+        font-size: 1.8rem;
+    }
+
+    .cta-empresas-subtitle {
+        font-size: 1rem;
+    }
+
+    .cta-empresas-button {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+    }
+
+    .depoimento-empresa-card {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .depoimento-empresa-text {
+        font-size: 1rem;
+    }
+
+    .logo {
+        width: 8em;
+        height: 3em;
+    }
+}
+
+/* Form Styles */
+.contato-empresas {
+    padding: 6rem 0;
+    background: var(--cor-branco);
+}
+
+.contato-empresas-form {
+    max-width: 800px;
+    margin: 2rem auto 0;
+    padding: 2.5rem 2rem;
+    background: var(--cor-branco);
+    border-radius: var(--border-radius);
+    box-shadow: var(--sombra-suave);
+}
+
+.form-fieldset {
+    border: none;
+    margin-bottom: 2.5rem;
+    padding: 0;
+}
+
+.fieldset-legend {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--cor-primaria-light);
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--cor-texto);
+}
+
+.form-group .required {
+    color: var(--cor-erro);
+    margin-left: 0.25rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--cor-primaria);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--cor-texto);
+    background-color: var(--cor-branco);
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 2px rgba(215, 160, 132, 0.2);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.radio-label input[type="radio"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: var(--cor-primaria);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.form-status {
+    text-align: center;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+    background-color: var(--cor-sucesso-bg);
+    color: var(--cor-sucesso);
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contato-empresas-form {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .form-actions .cta-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Animações */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estados de foco para acessibilidade */
+.cta-button:focus,
+.cta-empresas-button:focus,
+.nav-link:focus {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
+/* Redução de movimento para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
