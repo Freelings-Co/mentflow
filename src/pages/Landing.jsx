@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Shield,
   Heart,
@@ -240,7 +241,7 @@ const MentFlowLanding = () => {
 
             <nav className='desktop-nav'>
               <ul className='nav-menu'>
-                <li><a href="#" className="nav-link">Início</a></li>
+                <li><Link to="/" className="nav-link">Início</Link></li>
 
                 <li className="nav-dropdown">
                   <button
@@ -282,8 +283,8 @@ const MentFlowLanding = () => {
                   </div>
                 </li>
 
-                <li><a href="/especialistas" className="nav-link">Para Especialistas</a></li>
-                <li><a href="/empresas" className="nav-link">Para Empresas</a></li>
+                <li><Link to="/especialistas" className="nav-link">Para Especialistas</Link></li>
+                <li><Link to="/empresas" className="nav-link">Para Empresas</Link></li>
               </ul>
             </nav>
             <div className='header-actions'>
@@ -400,21 +401,21 @@ const MentFlowLanding = () => {
                 </div>
               </li>
               <li>
-                <a href="#" className="mobile-nav-link" onClick={closeMobileMenu}>
+                <Link to="/" className="mobile-nav-link" onClick={closeMobileMenu}>
                   Início
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                <Link to="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
                   Para Especialistas
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="/empresas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                <Link to="/empresas" className="mobile-nav-link" onClick={closeMobileMenu}>
                   Para Empresas
-                </a>
+                </Link>
               </li>
             </ul>
             <a

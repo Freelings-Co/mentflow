@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import './Especialistas.css';
 
@@ -147,7 +148,7 @@ const Especialistas = () => {
                                 <li><a href="#beneficios" className="nav-link">Benefícios</a></li>
                                 <li><a href="#como-funciona" className="nav-link">Como Funciona</a></li>
                                 <li><a href="#depoimento" className="nav-link">Depoimento</a></li> */}
-                                <li><a href="#" className="nav-link">Início</a></li>
+                                <li><Link to="/" className="nav-link">Início</Link></li>
 
                                 <li className="nav-dropdown">
                                     <button
@@ -177,13 +178,13 @@ const Especialistas = () => {
                                     </div>
                                 </li>
 
-                                <li><a href="/" className="nav-link">Para Clientes</a></li>
-                                <li><a href="/empresas" className="nav-link">Para Empresas</a></li>
+                                <li><Link to="/especialistas" className="nav-link">Para Especialistas</Link></li>
+                                <li><Link to="/empresas" className="nav-link">Para Empresas</Link></li>
                             </ul>
                         </nav>
 
                         <div className="header-actions">
-                            <a href="#cadastro" className="cta-button">Cadastre-se</a>
+                            <Link to="#cadastro" className="cta-button">Cadastre-se</Link>
                             <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
                                 ☰
                             </button>
@@ -293,21 +294,21 @@ const Especialistas = () => {
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="#" className="mobile-nav-link" onClick={closeMobileMenu}>
+                                    <Link to="/" className="mobile-nav-link" onClick={closeMobileMenu}>
                                         Início
-                                    </a>
+                                    </Link>
                                 </li>
 
                                 <li>
-                                    <a href="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                                    <Link to="/especialistas" className="mobile-nav-link" onClick={closeMobileMenu}>
                                         Para Especialistas
-                                    </a>
+                                    </Link>
                                 </li>
 
                                 <li>
-                                    <a href="/empresas" className="mobile-nav-link" onClick={closeMobileMenu}>
+                                    <Link to="/empresas" className="mobile-nav-link" onClick={closeMobileMenu}>
                                         Para Empresas
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                             <a
