@@ -25,7 +25,7 @@ export default function MainLayout({ children }) {
           </div>
           <div className={styles.socials}>
           
-            <a href='https://instagram.com/mentflow' target='_blank' rel='noopener noreferrer' aria-label='Instagram'>              
+            <a href='https://www.instagram.com/mentflow_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' target='_blank' rel='noopener noreferrer' aria-label='Instagram'>              
               <InstagramLogoIcon size={40} color='white' />
             </a>
             <a href='https://linkedin.com/company/mentflow' target='_blank' rel='noopener noreferrer' aria-label='LinkedIn'>
