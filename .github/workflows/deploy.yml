@@ -5,10 +5,14 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# 🔐 Permissões para conseguir dar push na branch de deploy
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,6 +31,14 @@ jobs:
       - name: Build project
         run: npm run build
 
+      # 🔍 Confere o que foi gerado (ajuste "dist" se seu build gerar outra pasta)
+      - name: Verify build output
+        run: |
+          echo "Workspace:"
+          ls -la
+          echo "Build folder (dist):"
+          ls -la dist || (echo "ERRO: pasta 'dist' não existe. Ajuste o 'folder:' abaixo." && exit 1)
+
       - name: Configure Git
         run: |
           git config --global user.name "GitHub Actions"
@@ -35,11 +47,16 @@ jobs:
       - name: Deploy to deploy-static branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          # ⚠️ Se seu build gerar 'build' (CRA) ou 'out' (next export), troque aqui:
           folder: dist
           branch: deploy-static
+          # Evita conflitos de histórico e simplifica o push:
+          single-commit: true
           clean: true
+          # Esses excludes só fazem sentido se existirem na branch de deploy
           clean-exclude: |
             .git
             .github
             README.md
           commit-message: "Deploy: Atualização automática via GitHub Actions [skip ci]"
+          token: ${{ secrets.GITHUB_TOKEN }}
