@@ -498,13 +498,15 @@ const Especialistas = () => {
                             <div className="depoimento-card">
                                 <div className="depoimento-content">
                                     <p className="depoimento-text">
-                                        "Atender pela MentFlow foi um divisor de águas para minha prática clínica. Consigo organizar minha agenda,
-                                        alcançar pacientes que antes não teria contato e ainda manter uma rotina equilibrada. É tecnologia que me
-                                        aproxima das pessoas, não que me afasta."
+                                        "Como profissional da saúde mental, que valoriza a ética, o cuidado e a satisfação dos pacientes, encontrei na MentFlow uma aliada para alinhar todos esses aspectos.
+
+A plataforma funciona como uma verdadeira secretária eletrônica: prática, acessível e eficiente, com recursos como agendamento simplificado e lembretes automáticos. Essa estrutura me proporciona não apenas organização no dia a dia, mas também um aumento significativo no número de pacientes atendidos.
+
+O que mais me satisfaz é poder direcionar meu tempo e energia para o que realmente importa: a escuta qualificada, o aperfeiçoamento contínuo e a oferta de um atendimento de excelência. Estou muito satisfeita com a experiência e recomendo a colegas que buscam uma solução profissional confiável para atendimentos online."
                                     </p>
                                     <div className="depoimento-author">
                                         <div className="author-info">
-                                            <h4 className="author-name">Dra. Carla Menezes</h4>
+                                            <h4 className="author-name">Dra. Lívia Moreira</h4>
                                             <p className="author-role">Psicóloga Clínica</p>
                                         </div>
                                     </div>

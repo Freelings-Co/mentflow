@@ -527,9 +527,11 @@ const MentFlowLanding = () => {
                 status: "Seg à Sexta",
                 badge: "Mais Procurada",
                 linkAgendamento: "https://agendarconsulta.com/new/perfil/sr-livia-moreira-1757694224#location",
-                descricao: "Especialista em terapia cognitivo-comportamental com mais de 7 anos de experiência. Atua principalmente com ansiedade, depressão e transtornos do humor, oferecendo um ambiente acolhedor e técnicas comprovadas para o desenvolvimento pessoal.",
+                descricao: `Pós graduada em Psicologia Aplicada e Especialista em Terapia Cognitivo Comportamental. Há mais de 8 anos acompanhando pessoas em sua jornada e contribuindo de forma positiva. 
+Através de uma escuta acolhedora, te ensino a cuidar da sua criança interior e a lidar de maneira mais leve com os conflitos e desafios da vida. 
+Buscar ajuda não é sinal de fraqueza, mas de coragem. Agende sua sessão!`,
                 formacao: "CRP 1110799 • Pós graduação em Psicologia Aplicada - Universidade do Minho",
-                especialidades: ["Ansiedade", "Depressão", "TCC", "Terapia de Casal"],
+                especialidades: ["Ansiedade", "Depressão", "Transtorno de Personalidade", "Autoconhecimento", "Autoestima", "Traumas de infância", "Transtorno do Pânico", "Fobias"],
                 metodologia: "Abordagem humanizada focada no autoconhecimento e desenvolvimento de estratégias práticas para o dia a dia.",
                 experiencia: "7+ anos",
                 sessoes: "500+ sessões"
